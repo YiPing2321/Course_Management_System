@@ -35,7 +35,7 @@ public class CourseManagementSystem {
 				
 			} else if (option == 6) {
 				//Quit
-				
+				System.out.println("Thank you for using Course Management System!!");
 			} else {
 				//Invalid option entered
 				System.out.println("Invalid Option");
