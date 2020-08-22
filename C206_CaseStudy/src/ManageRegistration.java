@@ -8,6 +8,7 @@ import java.util.ArrayList;
  *
  * 19009259, Aug 22, 2020 8:33:53 pm
  */
+//Member 5 : -----------------------------Xin Ru---------------------------------
 
 public class ManageRegistration {
 	
@@ -15,7 +16,6 @@ public class ManageRegistration {
 		
 		ArrayList<Registration> registrationList = new ArrayList<Registration>();
 
-		//Member 5 : Xinru
 		int option = 0;
 		
 		while (option != 4) {
@@ -54,6 +54,7 @@ public class ManageRegistration {
 	}
 	
 	//M5 : Task 1 - Register for course schedule
+		//-----------------------------------REGISTER--------------------------------------
 	
 	private static void addCourseSchedule(ArrayList<Registration> registrationList) {
         // TODO Auto-generated method stub
@@ -79,7 +80,7 @@ public class ManageRegistration {
 
 
 			//M5 : Task 2 - Display all items from arrayList of Registration
-	//-------------------------RETRIEVE ARRAYLIST-------------
+	//---------------------------------------RETRIEVE ARRAYLIST--------------------------------
 	
   public static String retrieveAllRegistration(ArrayList<Registration> registrationList) {
         String output = "";
@@ -107,7 +108,8 @@ public class ManageRegistration {
 			System.out.println(output);
 		}
 			
-			//M5 : Task 3 ------------------ Delete Registration---------------------------
+			//M5 : Task 3 - Delete Registered Course Schedule
+			//--------------------------Delete Registration---------------------------
 			
 			public static void deleteRegistration(ArrayList<Registration> registrationList, int registration_id) {
 			        for (int i = 0; i < registrationList.size(); i++) {
@@ -123,28 +125,4 @@ public class ManageRegistration {
 			}
 	}
 
-			// NOT CONFIRMED : XINRU
-			
-//			      Helper.line(40, "-");
-//			      System.out.println("DELETE REGISTRATION");
-//			      Helper.line(40, "-");
-//			      
-//			      int registration_no = Helper.readInt("Enter Registration ID > ");
-//			      boolean exist = false;
-//			      
-//			      for (Registration r : Registration) {
-//
-//			        if (r.Registration_no().equalsIgnoreCase(Registration_no)) {
-//
-//			         {
-//			        	 Registration.remove(r);
-//			          exist = true;
-//			          break;
-//			        } 
-//			      }
-//			      if (exist == false) {
-//			        System.out.println("Registration ID does not exist");
-//			      }
-//			      
-//			    }
-//			  }
+		
