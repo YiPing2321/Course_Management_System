@@ -64,7 +64,7 @@ public class ManageCourse_CategoryTest {
 		allCategory = ManageCategory.retrieveAllCategory(Course_Category);
 		testOutput = String.format("%-20s %-20s \n", "Technology", "Gives a deeper insight about the world of Technology");
 		
-		testOutput = String.format("%-20s %-20s \n", "Sports Science", "Studies how the healthy human body works during exercise");
+		testOutput += String.format("%-20s %-20s \n", "Sports Science", "Studies how the healthy human body works during exercise");
 	
 		assertEquals("Test that ViewAllCategory", testOutput, allCategory);
 	}
@@ -115,7 +115,7 @@ public class ManageCourse_CategoryTest {
 		//Test that if the item have been deleted, the Course_Category List arraylist size is decrease by 1 
 		// which in this case is 0 - normal
 		ManageCategory.deleteCategory(Course_Category, cc2.getCourse_name());
-		assertEquals("Check that Course_Category arraylist size is 1", 1, Course_Category.size());
+		assertEquals("Check that Course_Category arraylist size is 0", 0, Course_Category.size());
 		assertEquals("Check that if the deleted name is not used anymore?",
 				true, name != Course_Category.get(0).getCourse_name());
 	}
