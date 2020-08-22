@@ -88,7 +88,7 @@ public class ManageCourse_CategoryTest {
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
 		ManageCategory.addCategory(Course_Category, cc2);
-		assertEquals("Check that Course_Category arraylist size is 1", 1, Course_Category.size());
+		assertEquals("Check that Course_Category arraylist size is 2", 2, Course_Category.size());
 		assertSame("Check that Course Category is added", cc2, Course_Category.get(0));
 		
 		//Test that name does not exist yet - boundary
