@@ -14,15 +14,47 @@ public class ManageRegistration {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		ArrayList<Registration> registrationList = new ArrayList<Registration>();
+
 		//Member 5 : xinru
+int option = 0;
+		
+		while (option != 4) {
+			
+			ManageRegistration.registration_menu();
+			option = Helper.readInt("Enter an option > ");
+			
+			if (option == 1) {
+				
+			} else if (option == 2) {
+				ManageRegistration.viewAllRegistration(registrationList);
+				
+			} else if (option == 3) {
+				ManageRegistration.viewAllRegistration(registrationList);
+				int registration_id = Helper.readInt("Enter a Registration ID you wish to delete > ");
+				ManageRegistration.deleteRegistration(registrationList, registration_id);
+				
+			} else if (option == 4) {
+				C206_CaseStudy.main(args);
+			} else {
+				System.out.println("Invalid Option");
+			}
+		}
+	}
+		
+		private static void registration_menu() {
+		// TODO Auto-generated method stub
+		
+	}
+
 		public static void RegistrationMenu() {
 			Helper.line(30, "=");
 			System.out.println("REGISTRATION MANAGEMENT");
 			Helper.line(30, "=");
-			System.out.println("1. View all registration");
-			System.out.println("2. View all registration ");
-			System.out.println("3. Delete registration");
+			System.out.println("1. Register for Course Schedule");
+			System.out.println("2. View All Registration ");
+			System.out.println("3. Delete Registration");
 	}
 
 			//M5 : Task 2 - Display all items from arrayList of Registration
