@@ -19,7 +19,7 @@ public class ManageRegistration {
 			
 			ManageRegistration.RegistrationMenu();
 			option = Helper.readInt("Enter an option > ");
-			
+			 
 			if (option == 1) {
 				ManageRegistration.viewAllRegistration(registrationList);
 			} else if (option == 2) {
