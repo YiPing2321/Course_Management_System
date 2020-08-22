@@ -17,7 +17,7 @@ public class ManageRegistration {
 		
 		ArrayList<Registration> registrationList = new ArrayList<Registration>();
 
-		//Member 5 : xinru
+		//Member 5 : Xinru
 int option = 0;
 		
 		while (option != 4) {
