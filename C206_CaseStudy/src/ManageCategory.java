@@ -143,9 +143,5 @@ public class ManageCategory {
 		}
 	}
 
-	public static String retrieveAllCSchedule(ArrayList<Course_Category> course_Category) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
