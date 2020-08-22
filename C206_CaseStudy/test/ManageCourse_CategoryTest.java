@@ -80,7 +80,7 @@ public class ManageCourse_CategoryTest {
 		assertSame("Check that Course Category is added", cc1, Course_Category.get(0));
 		
 		//Test that name does not exist yet - boundary
-		assertEquals("Check that category name does not exist yet?", true, cc1.getCourse_name().eq );
+		//NA since it's tested below in CC2
 		
 		//Test that field is filled - error
 		assertEquals("Check that all field is filled", true, cc1.getCourse_name() != null && cc1.getCourse_description() != null);
@@ -92,7 +92,7 @@ public class ManageCourse_CategoryTest {
 		assertSame("Check that Course Category is added", cc2, Course_Category.get(0));
 		
 		//Test that name does not exist yet - boundary
-		assertEquals("Check that category name does not exist yet?", true, cc1.getCourse_name().eq );
+		assertEquals("Check that category name does not exist yet?", true, cc2.getCourse_Name() != cc1.getCourse_Name() );
 				
 		//Test that field is filled - error
 		assertEquals("Check that all field is filled", true, cc2.getCourse_name() != null && cc2.getCourse_description() != null);
