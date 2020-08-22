@@ -31,7 +31,7 @@ public class ManageCategory {
 		
 		while (option != Option_Quit) {
 			
-			ManageCategory.Schedule_Menu();
+			ManageCategory.Category_Menu();
 			option = Helper.readInt("Enter an option > ");
 			
 			if (option == Option_View) {
@@ -50,7 +50,7 @@ public class ManageCategory {
 		}
 	}
 	
-	public static void Schedule_Menu() {
+	public static void Category_Menu() {
 		C206_CaseStudy.setHeader("Manage Course Category");
 		System.out.println("1. View Course Category");
 		System.out.println("2. Add Course Category");
