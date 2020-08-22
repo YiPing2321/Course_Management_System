@@ -9,20 +9,40 @@ import java.util.ArrayList;
  */
 
 public class ManageRegistration {
-
-	/**
-	 * @param args
-	 */
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//Member 5 : xinru
-		public static void RegistrationMenu() {
-			Helper.line(30, "=");
-			System.out.println("REGISTRATION MANAGEMENT");
-			Helper.line(30, "=");
-			System.out.println("1. View all registration");
-			System.out.println("2. View all registration ");
-			System.out.println("3. Delete registration");
+		ArrayList<Registration> registrationList = new ArrayList<Registration>();
+		
+		int option = 0;
+		while (option != 4) {
+			
+			ManageRegistration.RegistrationMenu();
+			option = Helper.readInt("Enter an option > ");
+			
+			if (option == 1) {
+				ManageRegistration.viewAllRegistration(registrationList);
+			} else if (option == 2) {
+				
+			} else if (option == 3) {
+				
+			} else if (option == 4) {
+				System.out.println("Thank you for Manage Course Schedule service");
+			} else {
+				System.out.println("Invalid Option");
+			}
+		}
+		
+	}
+	//Member 5 : xinru
+	public static void RegistrationMenu() {
+		Helper.line(30, "=");
+		System.out.println("REGISTRATION MANAGEMENT");
+		Helper.line(30, "=");
+		System.out.println("1. View all registration");
+		System.out.println("2. View all registration ");
+		System.out.println("3. Delete registration");
+		System.out.println("4. Back");
 	}
 
 			//M5 : Task 2 - Display all items from arrayList of Registration
