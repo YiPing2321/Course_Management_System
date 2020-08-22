@@ -12,19 +12,19 @@ public class C206_CaseStudy {
 			
 			if (option == 1) {
 				//Manage Members task - call method in class
-				
+				ManageCategory.main(args);
 			} else if (option == 2) {
 				//Manage Category task - call method in class
-				
+				ManageCategory.main(args);
 			} else if (option == 3) {
 				//Manage Course task - call method in class
-				
+				ManageCourse.main(args);
 			} else if (option == 4) {
 				//Manage Course Schedule task - call method in class
-				
+				ManageCourse_Schedule.main(args);
 			} else if (option == 5) {
 				//Manage Registration task - call method in class
-				
+				ManageRegistration.main(args);
 			} else if (option == 6) {
 				//Quit
 				System.out.println("Thank you for using Course Management System!!");
