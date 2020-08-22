@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 
+
 /**
  * I declare that this code was written by me.
  * I will not copy or allow others to copy my code.
  * I understand that copying code is considered as plagiarism.
  *
- * 19030407, Aug 22, 2020 7:33:53 AM
+ * 19009259, Aug 22, 2020 8:33:53 pm
  */
 
 public class ManageRegistration {
@@ -23,6 +24,7 @@ public class ManageRegistration {
 			option = Helper.readInt("Enter an option > ");
 			
 			if (option == 1) {
+				ManageRegistration.addCourseSchedule(registrationList);
 				
 			} else if (option == 2) {
 				ManageRegistration.viewAllRegistration(registrationList);
@@ -33,29 +35,52 @@ public class ManageRegistration {
 				ManageRegistration.deleteRegistration(registrationList, registration_id);
 				
 			} else if (option == 4) {
-				C206_CaseStudy.main(args);
-			} else {
-				System.out.println("Invalid Option");
-			}
-		}
-	}
-		
-	//Member 5 : xinru
+				  System.out.println("Thank you for using this system!");
+            } else {
+                System.out.println("Invalid option");
+            }
+        }
+    }
+				
 	public static void RegistrationMenu() {
-		Helper.line(30, "=");
+		Helper.line(50, "=");
 		System.out.println("REGISTRATION MANAGEMENT");
-		Helper.line(30, "=");
-		System.out.println("1. View all registration");
+		Helper.line(50, "=");
+		
+		System.out.println("1. Register for course schedule");
 		System.out.println("2. View all registration ");
 		System.out.println("3. Delete registration");
-		System.out.println("4. Back");
-
-		
+		System.out.println("4. Quit");
 	}
+	
+	//M5 : Task 1 - Register for course schedule
+	
+	private static void addCourseSchedule(ArrayList<Registration> registrationList) {
+        // TODO Auto-generated method stub
+        Helper.line(40, "=");
+        System.out.println("REGISTER COURSE SCHEDULE");
+        Helper.line(40, "=");
+
+ 
+
+        int registration_no = Helper.readInt("Enter Registration Number > ");
+        String schedule_id = Helper.readString("Enter Schedule ID > ");
+        String  email = Helper.readString("Enter Member's Email > ");
+        String status = Helper.readString("Enter Status > ");	
+        String start_date = Helper.readString("Enter Course Schedule Starting Date > ");
+        String end_date = Helper.readString("Enter Course Schedule Ending Date > ");
+        
+        registrationList.add(new Registration(registration_no, schedule_id, email, status, start_date, end_date ));
+
+        ManageRegistration.viewAllRegistration(registrationList);
+        
+        System.out.println("Course Schedule Registered!");        
+    }
 
 
 			//M5 : Task 2 - Display all items from arrayList of Registration
-	//retrieve ArrayList
+	//-------------------------RETRIEVE ARRAYLIST-------------
+	
   public static String retrieveAllRegistration(ArrayList<Registration> registrationList) {
         String output = "";
            
@@ -66,7 +91,7 @@ public class ManageRegistration {
         }
         return output;
     }
-       //View arrayList
+	//M5 : Task 2 ------------------ VIEW ALL REGISTRATION---------------------------
 			private static void viewAllRegistration(ArrayList<Registration> registrationList) {
 
 			Helper.line(40, "-");
@@ -74,7 +99,7 @@ public class ManageRegistration {
 			Helper.line(40, "-");
 				
 			String output = "";
-			output += String.format("%-20s %-10s %-20s %-20s %-20s %-20s\n", "REGISTRATION_ID", "SCHEDULE_ID", "EMAIL", "STATUS", "STARTDATE/ TIME", "ENDDATE/ TIME");
+			output += String.format("%-20s %-10s %-20s %-20s %-20s %-20s\n", "REGISTRATION_ID", "SCHEDULE_ID", "EMAIL", "STATUS", "START DATE", "ENDDATE");
 			
 			for(Registration r : registrationList) {
 				output  += String.format("%-20s %-10s %-20s %-20s %-20s %-20s\n", r.getRegistration_no(), r.getSchedule_id(), r.getEmail(), r.getStatus(), r.getStart_date(), r.getEnd_date());
@@ -82,7 +107,8 @@ public class ManageRegistration {
 			System.out.println(output);
 		}
 			
-			//M5 : Task 3 - Delete Registration
+			//M5 : Task 3 ------------------ Delete Registration---------------------------
+			
 			public static void deleteRegistration(ArrayList<Registration> registrationList, int registration_id) {
 			        for (int i = 0; i < registrationList.size(); i++) {
 			        	Registration r = registrationList.get(i);
