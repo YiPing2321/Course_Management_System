@@ -1,7 +1,5 @@
 import static org.junit.Assert.*;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -89,7 +87,7 @@ public class ManageCourse_CategoryTest {
 		//The item just added is as same as the second item of the list
 		ManageCategory.addCategory(Course_Category, cc2);
 		assertEquals("Check that Course_Category arraylist size is 2", 2, Course_Category.size());
-		assertSame("Check that Course Category is added", cc2, Course_Category.get(0));
+		assertSame("Check that Course Category is added", cc2, Course_Category.get(1));
 		
 		//Test that name does not exist yet - boundary
 		assertEquals("Check that category name does not exist yet?", true, cc2.getCourse_name() != cc1.getCourse_name() );
@@ -116,8 +114,7 @@ public class ManageCourse_CategoryTest {
 		// which in this case is 0 - normal
 		ManageCategory.deleteCategory(Course_Category, cc2.getCourse_name());
 		assertEquals("Check that Course_Category arraylist size is 0", 0, Course_Category.size());
-		assertEquals("Check that if the deleted name is not used anymore?",
-				true, name != Course_Category.get(0).getCourse_name());
+		//No need to check if the deleted name is not used anymore becuse the size of the arraylist is 0, and 1 will be null
 	}
 
 }
