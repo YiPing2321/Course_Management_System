@@ -11,29 +11,35 @@ import java.util.ArrayList;
 public class ManageRegistration {
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ArrayList<Registration> registrationList = new ArrayList<Registration>();
 		
+		ArrayList<Registration> registrationList = new ArrayList<Registration>();
+
+		//Member 5 : Xinru
 		int option = 0;
+		
 		while (option != 4) {
 			
 			ManageRegistration.RegistrationMenu();
 			option = Helper.readInt("Enter an option > ");
-			 
+			
 			if (option == 1) {
-				ManageRegistration.viewAllRegistration(registrationList);
+				
 			} else if (option == 2) {
+				ManageRegistration.viewAllRegistration(registrationList);
 				
 			} else if (option == 3) {
+				ManageRegistration.viewAllRegistration(registrationList);
+				int registration_id = Helper.readInt("Enter a Registration ID you wish to delete > ");
+				ManageRegistration.deleteRegistration(registrationList, registration_id);
 				
 			} else if (option == 4) {
-				System.out.println("Thank you for Manage Course Schedule service");
+				C206_CaseStudy.main(args);
 			} else {
 				System.out.println("Invalid Option");
 			}
 		}
-		
 	}
+		
 	//Member 5 : xinru
 	public static void RegistrationMenu() {
 		Helper.line(30, "=");
@@ -43,7 +49,10 @@ public class ManageRegistration {
 		System.out.println("2. View all registration ");
 		System.out.println("3. Delete registration");
 		System.out.println("4. Back");
+
+		
 	}
+
 
 			//M5 : Task 2 - Display all items from arrayList of Registration
 	//retrieve ArrayList
