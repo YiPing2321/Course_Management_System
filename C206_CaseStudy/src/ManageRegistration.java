@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+
+import c206_caseStudy.Registration;
 
 /**
  * I declare that this code was written by me.
@@ -14,6 +17,78 @@ public class ManageRegistration {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		public static void RegistrationMenu() {
+			Helper.line(30, "=");
+			System.out.println("REGISTRATION MANAGEMENT");
+			Helper.line(30, "=");
+			System.out.println("1. View all registration");
+			System.out.println("2. View all registration ");
+			System.out.println("3. Delete registration");
+	}
+		
+			//M5 : Task 2 - Display all items from arrayList of Registration
+  public static String retrieveAllRegistration(ArrayList<Registration> registrationList) {
+        String output = "";
+           
+        for (int i = 0; i < registrationList.size(); i++) {
+               
+        	Registration r = registrationList.get(i);
+            output += String.format("%-20s %-10.2f %-20s %-20s %-30s\n", r.getRegistration_no(), r.getSchedule_id(), r.getEmail(), r.getStatus(), r.getStart_date(), r.getEnd_date());
+        }
+        return output;
+    }
+       
+			private static void viewAllRegistration(ArrayList<Registration> registrationList) {
+
+			Helper.line(40, "-");
+			System.out.println("VIEW ALL REGISTRATION");
+			Helper.line(40, "-");
+				
+			String output = "";
+			output += String.format("%-20s %-10s %-20s %-20s %-20s %-20s\n", "REGISTRATION_ID", "SCHEDULE_ID", "EMAIL", "STATUS", "STARTDATE/ TIME", "ENDDATE/ TIME");
+			
+			for(Registration r : registrationList) {
+				output  += String.format("%-20s %-10s %-20s %-20s %-20s %-20s\n", r.getRegistration_no(), r.getSchedule_id(), r.getEmail(), r.getStatus(), r.getStart_date(), r.getEnd_date());
+			}
+			System.out.println(output);
+		}
+			
+			//M5 : Task 3 - Delete Registration
+			public static void deleteRegistration(ArrayList<Registration> registrationList, String registration_id) {
+			        for (int i = 0; i < registrationList.size(); i++) {
+			        	Registration r = registrationList.get(i);
+			           
+			            if (r.getRegistration_no() == registration_id) {
+			            	registrationList.remove(i);
+			                System.out.println("**Registration Successfully deleted!");
+			            } else {
+			                System.out.println("**Registration ID not found");
+			            }
+			        }
+			    }
+//			      Helper.line(40, "-");
+//			      System.out.println("DELETE REGISTRATION");
+//			      Helper.line(40, "-");
+//			      
+//			      int registration_no = Helper.readInt("Enter Registration ID > ");
+//			      boolean exist = false;
+//			      
+//			      for (Registration r : Registration) {
+//
+//			        if (r.Registration_no().equalsIgnoreCase(Registration_no)) {
+//
+//			         {
+//			        	 Registration.remove(r);
+//			          exist = true;
+//			          break;
+//			        } 
+//			      }
+//			      if (exist == false) {
+//			        System.out.println("Registration ID does not exist");
+//			      }
+//			      
+//			    }
+//			  }
 
 	}
 
