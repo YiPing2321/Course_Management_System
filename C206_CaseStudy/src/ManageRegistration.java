@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import c206_caseStudy.Registration;
-
 /**
  * I declare that this code was written by me.
  * I will not copy or allow others to copy my code.
@@ -17,6 +15,7 @@ public class ManageRegistration {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//Member 5 : xinru
 		public static void RegistrationMenu() {
 			Helper.line(30, "=");
 			System.out.println("REGISTRATION MANAGEMENT");
@@ -25,8 +24,9 @@ public class ManageRegistration {
 			System.out.println("2. View all registration ");
 			System.out.println("3. Delete registration");
 	}
-		
+
 			//M5 : Task 2 - Display all items from arrayList of Registration
+	//retrieve ArrayList
   public static String retrieveAllRegistration(ArrayList<Registration> registrationList) {
         String output = "";
            
@@ -37,7 +37,7 @@ public class ManageRegistration {
         }
         return output;
     }
-       
+       //View arrayList
 			private static void viewAllRegistration(ArrayList<Registration> registrationList) {
 
 			Helper.line(40, "-");
@@ -54,18 +54,22 @@ public class ManageRegistration {
 		}
 			
 			//M5 : Task 3 - Delete Registration
-			public static void deleteRegistration(ArrayList<Registration> registrationList, String registration_id) {
+			public static void deleteRegistration(ArrayList<Registration> registrationList, int registration_id) {
 			        for (int i = 0; i < registrationList.size(); i++) {
 			        	Registration r = registrationList.get(i);
 			           
 			            if (r.getRegistration_no() == registration_id) {
 			            	registrationList.remove(i);
-			                System.out.println("**Registration Successfully deleted!");
+			                System.out.println("**Registration deleted!");
 			            } else {
 			                System.out.println("**Registration ID not found");
 			            }
 			        }
-			    }
+			}
+	}
+
+			// NOT CONFIRMED : XINRU
+			
 //			      Helper.line(40, "-");
 //			      System.out.println("DELETE REGISTRATION");
 //			      Helper.line(40, "-");
@@ -89,7 +93,3 @@ public class ManageRegistration {
 //			      
 //			    }
 //			  }
-
-	}
-
-}
