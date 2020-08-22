@@ -6,10 +6,10 @@ public class Registration {
 	private String schedule_id;
 	private String email;
 	private String status;
-	private LocalDateTime start_date;
-	private LocalDateTime end_date;
+	private String start_date;
+	private String end_date;
 	
-	public Registration(int registration_no, String schedule_id, String email, String status, LocalDateTime start_date, LocalDateTime end_date) {
+	public Registration(int registration_no, String schedule_id, String email, String status, String start_date, String end_date) {
 		this.registration_no = registration_no;
 		this.schedule_id = schedule_id;
 		this.email = email;
@@ -34,11 +34,11 @@ public class Registration {
 		return status;
 	}
 
-	public LocalDateTime getStart_date() {
+	public String getStart_date() {
 		return start_date;
 	}
 
-	public LocalDateTime getEnd_date() {
+	public String getEnd_date() {
 		return end_date;
 	}
 
