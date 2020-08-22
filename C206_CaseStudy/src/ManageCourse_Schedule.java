@@ -46,7 +46,7 @@ public class ManageCourse_Schedule {
 				String id = Helper.readString("Enter a Course Schedule ID you wish to delete > ");
 				ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, id);
 			} else if (option == Option_Quit) {
-				C206_CaseStudy.main(args);
+				System.out.println("Thank you for Manage Course Schedule service");
 			} else {
 				System.out.println("Invalid Option");
 			}
