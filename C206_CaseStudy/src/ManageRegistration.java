@@ -55,8 +55,8 @@ public class ManageRegistration {
 	
 	//M5 : Task 1 - Register for course schedule
 		//-----------------------------------REGISTER--------------------------------------
-	
-	private static void addCourseSchedule(ArrayList<Registration> registrationList) {
+
+	public static void addCourseSchedule(ArrayList<Registration> registrationList) {
         // TODO Auto-generated method stub
         Helper.line(40, "=");
         System.out.println("REGISTER COURSE SCHEDULE");
@@ -123,6 +123,7 @@ public class ManageRegistration {
 			            }
 			        }
 			}
-	}
+
+}
 
 		
