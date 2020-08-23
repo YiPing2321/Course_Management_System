@@ -19,7 +19,7 @@ public class C206_CaseStudy {
 			
 			if (option == Option_ManageMember) {
 				//Manage Members task - call method in class
-				ManageCategory.main(args);
+				ManageMember.main(args);
 			} else if (option == Option_ManageCategory) {
 				//Manage Category task - call method in class
 				ManageCategory.main(args);
