@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * 19030407, Aug 22, 2020 7:32:15 AM
  */
-//Done by Guang Hao
+//Done by Guang Hao.
 public class ManageCourse_Schedule {
 
 	//Refractor of the option
