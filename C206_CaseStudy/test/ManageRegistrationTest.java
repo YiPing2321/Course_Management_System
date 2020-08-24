@@ -48,7 +48,7 @@ public class ManageRegistrationTest {
 		ManageRegistration.addCourseSchedule(registrationList);
 		assertEquals("Test that registration arraylist size is 1", 1, registrationList.size());
 		
-		//test if the expected output string same as the list of Course Registration retrieved from the Case_Study	
+		//test if the expected output string same as the list of Course Registration retrieved from the Case_Study - 	
 		allRegistration = ManageRegistration.retrieveAllRegistration(registrationList);
 		testOutput = String.format("%-20s %-10.2f %-20s %-20s %-30s\n", 1, "CS001", "ABC@gmail.com", "Pending", "1/08/2020", "15/08/2020");
 		
@@ -67,7 +67,7 @@ public class ManageRegistrationTest {
 		assertEquals("Check that Registration arraylist size is 1", 1, registrationList.size());
 		assertSame("Check that Registration is added", r1, registrationList.get(0));
 						
-		//Add another item. test The size of the list is 2? -normal
+		//Add another item. test The size of the list is 2 -normal
 		//The item just added is as same as the second item of the list
 		ManageRegistration.addCourseSchedule(registrationList);
 		assertEquals("Check that Course_Category arraylist size is 2", 2, registrationList.size());
@@ -87,7 +87,7 @@ public class ManageRegistrationTest {
 		int name = r1.getRegistration_no();
 		ManageRegistration.deleteRegistration(registrationList, r1.getRegistration_no());
 		assertEquals("Check that Registration arraylist size is 1", 1, registrationList.size());
-		assertEquals("Check that the deleted ID is not used anymore?",
+		assertEquals("Check that the deleted ID is not used anymore",
 				true, name != registrationList.get(0).getRegistration_no());
 						
 		//Test that if the item have been deleted, the Registration arraylist size is decrease by 1 
@@ -97,4 +97,5 @@ public class ManageRegistrationTest {
 	}
 }
 
+// once arraylist is 0, if user enter to delete a registration error will show "No registration ID found" - Error
 
