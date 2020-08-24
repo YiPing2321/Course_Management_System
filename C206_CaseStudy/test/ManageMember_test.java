@@ -38,23 +38,27 @@ public class ManageMember_test {
 	public void retrieveAllMembersTest() {
 		//Test if list is not null but empty
 		assertNotNull("Test if there is valid Member arraylist to retrieve",memberList);
-		//Check if size of empty arraylist becomes 2 after adding 
-		ManageMember.addMembers(memberList, member1);
-		ManageMember.addMembers(memberList,member2);
-		assertEquals("Test arraylist size == 2",2,memberList.size());
+		//Test if retrieved arraylist is empty
+		String members = ManageMember.retrieveMembers(memberList);
+		String output = "";
+		assertEquals("Test the retrieved memberlist is empty",output,members);
 	}
 	@Test
 	public void addMembersTest() {
 		//check memberList is not null
 		assertNotNull("Test for valid arraylist to add new members",memberList);
+		//check arraylist size is 1 after adding
+		ManageMember.addMembers(memberList);
+		assertEquals("Check that memberList size is 1",1,memberList.size());
 	}
+	@Test
 	public void deleteMembersTest() {
-		retrieveAllMembers();
+		ManageMember.retrieveMembers(memberList);
 		//test list not null but empty
 		assertNotNull("Test for valid arraylist to delete members from",memberList);
 		//Test that if the item have been deleted, the memberList arraylist size decrease by 1 
 		//0 is normal
-		ManageMember.deleteMembers(memberList, member1.getName());
+		ManageMember.deleteMembers(memberList);
 		assertEquals("Check that memberList arraylist size is 0", 0, memberList.size());
 		
 	}

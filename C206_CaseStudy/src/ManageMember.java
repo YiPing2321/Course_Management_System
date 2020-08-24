@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 //Marvin
 public class ManageMember{
-	//private static ArrayList<Member> memberList; 	
 
 	public static void main(String[] args) {
 		ArrayList<Member> memberList = new ArrayList<Member>(); 
@@ -43,11 +42,13 @@ public class ManageMember{
 			System.out.println("4.Quit");
 		
 	}
-	public static void retrieveMembers(ArrayList<Member>memberList) {
+	public static String retrieveMembers(ArrayList<Member>memberList) {
 		String output = "";
 		for(int i=0;i<memberList.size();i++) {
 			output += String.format("%-10s %-10s %-20d %-20s %-20s %-20s\n",memberList.get(i).getName(),memberList.get(i).getGender(),memberList.get(i).getMobile_number(),memberList.get(i).getEmail(),memberList.get(i).getDob(),memberList.get(i).getCountry());
 		}
+		System.out.println(output);
+		return null;
 	}
 	public static void addMembers(ArrayList<Member>memberList) {
 		String name = Helper.readString("Enter Name >");
