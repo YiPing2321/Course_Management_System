@@ -54,26 +54,27 @@ public class ManageCourseTest {
             }
         }
         
-        @Test
+        @Test      
         public void DeleteCourseTest = (Test); {
-            ManageCourse.viewCourse(courseList);
-            //test course code entered is null
-            String courseCode = Helper.readString("Enter course code >");
-            for (int i = 0; i < courseList.size(); i++) {
-                if (courseCode.equals(null)) {
-                    System.out.println("Please enter a course code to delete course");
-                } else if (courseCode != null) {
-                    courseList.remove(i);
-                    System.out.println("Course deleted!");
+                ManageCourse.viewCourse(courseList);
+                //test course code entered is null
+                String courseCode = Helper.readString("Enter course code >");
+                for (int i = 0; i < courseList.size(); i++) {
+                    if (courseCode.equals(null)) {
+                        System.out.println("Please enter a course code to delete course");
+                    } else if (courseCode != null) {
+                        courseList.remove(i);
+                        System.out.println("Course deleted!");
+                    }
                 }
+                //test list not null but empty
+                assertNotNull("Test for valid arraylist to delete course from", courseList);
+                //Test that if the course have been deleted, the courseList arraylist size decrease by 1
+                //0 is normal
+                ManageCourse.deleteCourse(courseList);
+                assertEquals("Check that courserList arraylist size is 0", 0, courseList.size());
             }
-            //test list not null but empty
-            assertNotNull("Test for valid arraylist to delete members from",memberList);
-            //Test that if the item have been deleted, the memberList arraylist size decrease by 1 
-            //0 is normal
-            ManageMember.deleteMembers(memberList);
-            assertEquals("Check that memberList arraylist size is 0", 0, memberList.size());
-        }
+
         
         
         
