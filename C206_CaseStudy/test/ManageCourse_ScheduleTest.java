@@ -130,6 +130,8 @@ public class ManageCourse_ScheduleTest {
 		assertEquals("Check that Course_ScheduleList arraylist size is 0", 0, Course_ScheduleList.size());
 		//If the arraylist is 0 which is checked to be 0, then we do not need to check if 
 		// the deleted schedule id is not used anymore.
+		
+		ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, cs2.getSchedule_id());
 	}
 
 }
