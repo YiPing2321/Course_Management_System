@@ -51,8 +51,8 @@ public class ManageCourse_ScheduleTest {
 	@Test
 	
 	public void retrieveAllCSchedule() {
-		// Test if Item list is not null but empty - boundary
-		assertNotNull("Test if there is valid Course_ScheduleList arraylist to retrieve item", Course_ScheduleList);
+		// Test if Course Schedule list is not null - boundary
+		assertNotNull("Test if there is valid Course_ScheduleList arraylist to retrieve schedule", Course_ScheduleList);
 		
 		//test if the list of Course Schedule retrieved from the SourceCentre is empty - boundary
 		String allCSchedule= ManageCourse_Schedule.retrieveAllCSchedule(Course_ScheduleList);
@@ -109,14 +109,17 @@ public class ManageCourse_ScheduleTest {
 	@Test
 	public void deleteCScheduleTest() {
 		retrieveAllCSchedule();
-		// Test if Item list is not null but empty - boundary
-		assertNotNull("Test if there is valid Course Schedule arraylist to delete item", Course_ScheduleList);
+		// Test if Course Schedule list is not null then they will be able to delete schedule - boundary
+		assertNotNull("Test if there is valid Course Schedule arraylist to delete schedule", Course_ScheduleList);
 		
 		//Test that if the item have been deleted, the Course_Schedule List arraylist size is decrease by 1 
 		// which in this case is 1 - normal
 		String id = cs1.getSchedule_id();
 		ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, cs1.getSchedule_id());
 		assertEquals("Check that Course_ScheduleList arraylist size is 1", 1, Course_ScheduleList.size());
+		
+		//Test that if the item "cs1" is deleted, then the cs1 should not be found anymore in the 
+		//arraylist (error - Will display "Course Schedule id not found")
 		assertEquals("Check that if the deleted schedule id is not used anymore?",
 				true, id != Course_ScheduleList.get(0).getSchedule_id());
 						
@@ -124,7 +127,10 @@ public class ManageCourse_ScheduleTest {
 		// which in this case is 0 - normal
 		ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, cs2.getSchedule_id());
 		assertEquals("Check that Course_ScheduleList arraylist size is 0", 0, Course_ScheduleList.size());
-		//If the arraylist is 0 which is checked to be 0, then we do not need to check if 
+		
+		//Test that if the item "cs2" is deleted, then the cs2 should not be found anymore in the 
+		//arraylist (error - Will display "Course Schedule id not found")
+		//-> If the arraylist is 0 which is checked to be 0, then we do not need to check if 
 		// the deleted schedule id is not used anymore.
 	}
 
