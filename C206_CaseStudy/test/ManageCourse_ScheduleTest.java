@@ -59,6 +59,10 @@ public class ManageCourse_ScheduleTest {
 		String testOutput = "";
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCSchedule);
 		
+		//Test that cs1 and cs2 schedule id is not the same
+		assertEquals("Check if both course schedule id is not the same?", true, cs1.getSchedule_id() != cs2.getSchedule_id());
+
+		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
 		ManageCourse_Schedule.addCSchedule(Course_ScheduleList, cs1);
 		ManageCourse_Schedule.addCSchedule(Course_ScheduleList, cs2);
