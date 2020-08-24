@@ -77,16 +77,17 @@ public class ManageRegistrationTest {
 	
 		@Test
 		public void deleteRegistration() {
+			
 		retrieveAllRegistration();
 		// Test if Item list is not null but empty - boundary
 		assertNotNull("Test if there is valid Course Category arraylist to delete item", registrationList);
 		
-		//Test that if the item have been deleted, the Registration List arraylist size is decrease by 1 
+		//Test that if the item have been deleted, the Registration arraylist size is decrease by 1 
 		// which in this case is 1 - normal
 		int name = r1.getRegistration_no();
 		ManageRegistration.deleteRegistration(registrationList, r1.getRegistration_no());
 		assertEquals("Check that Registration arraylist size is 1", 1, registrationList.size());
-		assertEquals("Check that if the deleted ID is not used anymore?",
+		assertEquals("Check that the deleted ID is not used anymore?",
 				true, name != registrationList.get(0).getRegistration_no());
 						
 		//Test that if the item have been deleted, the Registration arraylist size is decrease by 1 
