@@ -72,20 +72,29 @@ public class ManageRegistrationTest {
 		ManageRegistration.addCourseSchedule(registrationList);
 		assertEquals("Check that Course_Category arraylist size is 2", 2, registrationList.size());
 		assertSame("Check that Course Category is added", r2, registrationList.get(1));
-}
-
-@Test
-public void deleteRegistration() {
-	ManageRegistration.retrieveAllRegistration(registrationList);
-	//test list not null but empty
-	assertNotNull("Test for valid arraylist to delete registration from",registrationList);
-	//Test that if the item have been deleted, the Registration arraylist size decrease by 1 
-	//0 is normal
-	ManageRegistration.retrieveAllRegistration(registrationList);
-	assertEquals("Check that memberList arraylist size is 0", 0, registrationList.size());
+	}
+		
 	
+		@Test
+		public void deleteRegistration() {
+			
+		retrieveAllRegistration();
+		// Test if Item list is not null but empty - boundary
+		assertNotNull("Test if there is valid Course Category arraylist to delete item", registrationList);
+		
+		//Test that if the item have been deleted, the Registration arraylist size is decrease by 1 
+		// which in this case is 1 - normal
+		int name = r1.getRegistration_no();
+		ManageRegistration.deleteRegistration(registrationList, r1.getRegistration_no());
+		assertEquals("Check that Registration arraylist size is 1", 1, registrationList.size());
+		assertEquals("Check that the deleted ID is not used anymore?",
+				true, name != registrationList.get(0).getRegistration_no());
+						
+		//Test that if the item have been deleted, the Registration arraylist size is decrease by 1 
+		// which in this case is 0 - normal
+	ManageRegistration.deleteRegistration(registrationList, r2.getRegistration_no());
+		assertEquals("Check that Registration arraylist size is 0", 0, registrationList.size());
+	}
 }
 
-
-}
 
