@@ -15,9 +15,10 @@ import org.junit.Test;
  *
  * 19030407, Aug 22, 2020 10:56:36 AM
  */
-
+//By Guang Hao..
 public class ManageCourse_ScheduleTest {
 
+	
 	private Course_Schedule cs1;
 	private Course_Schedule cs2;
 	private Course_Schedule cs3;
@@ -60,8 +61,8 @@ public class ManageCourse_ScheduleTest {
 	@Test
 	
 	public void retrieveAllCSchedule() {
-		// Test if Item list is not null but empty - boundary
-		assertNotNull("Test if there is valid Course_ScheduleList arraylist to retrieve item", Course_ScheduleList);
+		// Test if Course Schedule list is not null - boundary
+		assertNotNull("Test if there is valid Course_ScheduleList arraylist to retrieve schedule", Course_ScheduleList);
 		
 		//test if the list of Course Schedule retrieved from the SourceCentre is empty - boundary
 		String allCSchedule= ManageCourse_Schedule.retrieveAllCSchedule(Course_ScheduleList);
@@ -77,7 +78,7 @@ public class ManageCourse_ScheduleTest {
 		ManageCourse_Schedule.addCSchedule(Course_ScheduleList, cs2);
 		assertEquals("Test that Course_ScheduleList arraylist size is 2", 2, Course_ScheduleList.size());
 		
-		//test if the expected output string same as the list of Course Schedule retrieved from the Case_Study	
+		//test if the expected output string same as the list of Course Schedule retrieved 	
 		allCSchedule= ManageCourse_Schedule.retrieveAllCSchedule(Course_ScheduleList);
 		testOutput = String.format("%-20s %-10.1f %-20s %-20s %-30s\n", "CS001", 25.0, 
 				LocalDateTime.parse("11/08/2020, 08:30", formatter1), 
@@ -150,14 +151,22 @@ public class ManageCourse_ScheduleTest {
 	@Test
 	public void deleteCScheduleTest() {
 		retrieveAllCSchedule();
+<<<<<<< HEAD
+		// Test if Course Schedule list is not null then they will be able to delete schedule - boundary
+		assertNotNull("Test if there is valid Course Schedule arraylist to delete schedule", Course_ScheduleList);
+=======
 		// Test if arraylist is not null - boundary
 		assertNotNull("Test if there is valid Course Schedule arraylist to delete item", Course_ScheduleList);
+>>>>>>> branch 'master' of https://github.com/YiPing2321/Course_Management_System.git
 		
 		//Test that if the item have been deleted, the Course_Schedule List arraylist size is decrease by 1 
 		// which in this case is 1 - normal
 		String id = cs1.getSchedule_id();
 		ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, cs1.getSchedule_id());
 		assertEquals("Check that Course_ScheduleList arraylist size is 1", 1, Course_ScheduleList.size());
+		
+		//Test that if the item "cs1" is deleted, then the cs1 should not be found anymore in the 
+		//arraylist (error - Will display "Course Schedule id not found")
 		assertEquals("Check that if the deleted schedule id is not used anymore?",
 				true, id != Course_ScheduleList.get(0).getSchedule_id());
 						
@@ -165,7 +174,10 @@ public class ManageCourse_ScheduleTest {
 		// which in this case is 0 - normal
 		ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, cs2.getSchedule_id());
 		assertEquals("Check that Course_ScheduleList arraylist size is 0", 0, Course_ScheduleList.size());
-		//If the arraylist is 0 which is checked to be 0, then we do not need to check if 
+		
+		//Test that if the item "cs2" is deleted, then the cs2 should not be found anymore in the 
+		//arraylist (error - Will display "Course Schedule id not found")
+		//-> If the arraylist is 0 which is checked to be 0, then we do not need to check if 
 		// the deleted schedule id is not used anymore.
 		
 		//Test that after the arraylist is null already, deletion cannot be completed - error

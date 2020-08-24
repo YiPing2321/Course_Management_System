@@ -1,5 +1,6 @@
 
 public class C206_CaseStudy {
+	
 
 	private static final int Option_ManageMember = 1;
 	private static final int Option_ManageCategory = 2;
