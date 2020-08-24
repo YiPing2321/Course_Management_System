@@ -19,7 +19,7 @@ public class ManageCourse {
 
         while (option != 4) {
 
-            ManageCourse.menu();
+            ManageCourse.Course_menu();
             option = Helper.readInt("Enter an option > ");
 
             if (option == 1) {
@@ -91,7 +91,7 @@ public class ManageCourse {
         
     }
 
-    public static void menu() {
+    public static void Course_menu() {
         Helper.line(30, "=");
         System.out.println("MANAGE COURSE MENU");
         Helper.line(30, "=");
