@@ -168,7 +168,8 @@ public class ManageCourse_ScheduleTest {
 		//If the arraylist is 0 which is checked to be 0, then we do not need to check if 
 		// the deleted schedule id is not used anymore.
 		
-		//Test that after the arraylist is null already, deletion can be completed
+		//Test that after the arraylist is null already, deletion cannot be completed - error
+		//Message: Display Course Schedule Id not found
 		ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, cs2.getSchedule_id());
 	}
 
