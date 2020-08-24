@@ -64,13 +64,9 @@ public class ManageMember{
 	public static void deleteMembers(ArrayList<Member>memberList) {
 		String email = Helper.readString("Enter email corresponding to the account >");
 		for(int i=0;i<memberList.size();i++) {
-			if(email.equalsIgnoreCase(memberList.get(i).getEmail())) {
-				memberList.get(i).setName(null);
-				memberList.get(i).setGender(null);
-				memberList.get(i).setMobile_number(0);
-				memberList.get(i).setEmail(null);
-				memberList.get(i).setDob(null);
-				memberList.get(i).setCountry(null);
+			if(email.equals(memberList.get(i).getEmail())) {
+				memberList.remove(i);
+				System.out.println("Member deleted");
 			}
 		}
 		
