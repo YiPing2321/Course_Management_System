@@ -73,7 +73,7 @@ public class ManageRegistrationTest {
 		assertEquals("Check that Course_Category arraylist size is 2", 2, registrationList.size());
 		assertSame("Check that Course Category is added", r2, registrationList.get(1));
 		
-	
+	}
 	
 		@Test
 		public void deleteRegistration() {
@@ -96,6 +96,6 @@ public class ManageRegistrationTest {
 		assertEquals("Check that Registration arraylist size is 0", 0, registrationList.size());
 	}
 
-}
+
 
 }
