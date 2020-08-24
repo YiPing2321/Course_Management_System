@@ -19,7 +19,7 @@ public class ManageCourse {
 
         while (option != 4) {
 
-            ManageCourse.Course_menu();
+            ManageCourse.menu();
             option = Helper.readInt("Enter an option > ");
 
             if (option == 1) {
@@ -75,10 +75,11 @@ public class ManageCourse {
     private static void deleteCourse(ArrayList<Course> courseList) {
         // TODO Auto-generated method stub
         String code = Helper.readString("Enter course code > ");
-        char confirm = Helper.readChar("Are you sure you want to delete this course? (y/n) >"); 
+        char confirm = Helper.readChar("Are you sure you want to delete this course? (y/n) >");
         
         for (int i = 0; i < courseList.size(); i++) {
-            if (code == courseList.get(i).getCourseCode()) {
+            String courseCode = courseList.get(i).getCourseCode();
+            if (code.equals(courseCode)) {
                 if (confirm == 'y') {
                     courseList.remove(i);
                     System.out.println("Course deleted!");
@@ -90,11 +91,13 @@ public class ManageCourse {
         
     }
 
-        public static void Course_menu() {
-            System.out.println("MANAGE COURSE MENU");
-            System.out.println("1. ADD COURSE");
-            System.out.println("2. VIEW COURSE");
-            System.out.println("3. DELETE COURSE");
-            System.out.println("4. QUIT");
-        }
+    public static void menu() {
+        Helper.line(30, "=");
+        System.out.println("MANAGE COURSE MENU");
+        Helper.line(30, "=");
+        System.out.println("1. ADD COURSE");
+        System.out.println("2. VIEW COURSE");
+        System.out.println("3. DELETE COURSE");
+        System.out.println("4. QUIT");
+    }
 }
