@@ -59,7 +59,7 @@ public class ManageCourse_ScheduleTest {
 		String testOutput = "";
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCSchedule);
 		
-		//Test that cs1 and cs2 schedule id is not the same
+		//Test that cs1 and cs2 schedule id is not the same - error
 		assertEquals("Check if both course schedule id is not the same?", true, cs1.getSchedule_id() != cs2.getSchedule_id());
 
 		
