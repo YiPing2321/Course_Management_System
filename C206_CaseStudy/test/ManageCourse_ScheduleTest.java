@@ -31,17 +31,18 @@ public class ManageCourse_ScheduleTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		//normal
+		//normal - cs1 and cs2
 		cs1 = new Course_Schedule("CS001", 25.0, LocalDateTime.parse("11/08/2020, 08:30", formatter1), 
 				LocalDateTime.parse("12/08/2020, 16:00", formatter1), "W66L");
 		
 		cs2 = new Course_Schedule("CS002", 14.0, LocalDateTime.parse("12/08/2020, 09:15", formatter1), 
 				LocalDateTime.parse("13/08/2020, 15:30", formatter1), "W64J");
 		
+		//Testing boundary - cs3
 		cs3 = new Course_Schedule("CS003", 0.0, LocalDateTime.parse("13/08/2020, 09:45", formatter1), 
 				LocalDateTime.parse("13/08/2020, 09:46", formatter1), "W46L");
 		
-		//For error test purpose 
+		//For error test purpose - cs4
 		cs4 = new Course_Schedule("CS003", -0.1, LocalDateTime.parse("13/08/2020, 09:45", formatter1), 
 				LocalDateTime.parse("13/08/2020, 09:40", formatter1), "W46L");
 		Course_ScheduleList = new ArrayList<Course_Schedule>();
@@ -179,7 +180,7 @@ public class ManageCourse_ScheduleTest {
 		//-> If the arraylist is 0 which is checked to be 0, then we do not need to check if 
 		// the deleted schedule id is not used anymore.
 		
-		//Test that after the arraylist is null already, deletion cannot be completed - error
+		//Test that after the arraylist is null already, deletion cannot be completed - error test case
 		//Message: Display Course Schedule Id not found
 		ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, cs2.getSchedule_id());
 	}
