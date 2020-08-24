@@ -191,26 +191,30 @@ public class ManageCourse_Schedule {
 	public static void deleteCSchedule(ArrayList<Course_Schedule> Course_ScheduleList, String id) {
 		
 		boolean isDeleted = false;
-		char confirmDeleted = Helper.readChar("Do you want to delete this? (Y/N) > ");
 		
-		if (confirmDeleted == 'Y' || confirmDeleted == 'y') {
-			for (int i = 0; i < Course_ScheduleList.size(); i++) {
-				Course_Schedule cs = Course_ScheduleList.get(i);
+		
+		
+		for (int i = 0; i < Course_ScheduleList.size(); i++) {
+			Course_Schedule cs = Course_ScheduleList.get(i);
 				
-				if (id.equals(cs.getSchedule_id())) {
+			if (id.equals(cs.getSchedule_id())) {
+				char confirmDeleted = Helper.readChar("Do you want to delete this? (Y/N) > ");
+					
+				if (confirmDeleted == 'Y' || confirmDeleted == 'y') {
 					Course_ScheduleList.remove(i);
 					isDeleted = true;
+				} else if (confirmDeleted == 'N' || confirmDeleted == 'n') {
+					System.out.println("**Delete failed");
 				}
 			}
-			
-			if (isDeleted == false) {
-				System.out.println("**Course Schedule ID not found");
-			} else {
-				System.out.println("**Course Schedule Successfully deleted!!");
-			}
-		} else if (confirmDeleted == 'N' || confirmDeleted == 'n') {
-			System.out.println("**Delete failed");
 		}
+			
+		if (isDeleted == false) {
+			System.out.println("**Course Schedule ID not found");
+		} else {
+			System.out.println("**Course Schedule Successfully deleted!!");
+		}
+		
 		
 		
 		
