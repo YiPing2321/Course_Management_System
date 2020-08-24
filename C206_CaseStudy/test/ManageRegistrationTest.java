@@ -55,6 +55,9 @@ public class ManageRegistrationTest {
 		testOutput += String.format("%-20s %-10.2f %-20s %-20s %-30s\n", 2, "CS002", "EFG@gmail.com", "Pending", "1/08/2020", "31/08/2020");
 	
 		assertEquals("Test that ViewAllRegistration", testOutput, allRegistration);
+		
+		//Test that r1 and r2 registration id is not the same - error
+				assertEquals("Check if both course registration id is not the same?", true, r1.getRegistration_no() != r2.getRegistration_no());
 	}
 	
 	@Test

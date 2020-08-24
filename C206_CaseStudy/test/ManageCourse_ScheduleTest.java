@@ -60,6 +60,10 @@ public class ManageCourse_ScheduleTest {
 		String testOutput = "";
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCSchedule);
 		
+		//Test that cs1 and cs2 schedule id is not the same - error
+		assertEquals("Check if both course schedule id is not the same?", true, cs1.getSchedule_id() != cs2.getSchedule_id());
+
+		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
 		ManageCourse_Schedule.addCSchedule(Course_ScheduleList, cs1);
 		ManageCourse_Schedule.addCSchedule(Course_ScheduleList, cs2);
@@ -110,8 +114,13 @@ public class ManageCourse_ScheduleTest {
 	@Test
 	public void deleteCScheduleTest() {
 		retrieveAllCSchedule();
+<<<<<<< HEAD
 		// Test if Course Schedule list is not null then they will be able to delete schedule - boundary
 		assertNotNull("Test if there is valid Course Schedule arraylist to delete schedule", Course_ScheduleList);
+=======
+		// Test if arraylist is not null - boundary
+		assertNotNull("Test if there is valid Course Schedule arraylist to delete item", Course_ScheduleList);
+>>>>>>> branch 'master' of https://github.com/YiPing2321/Course_Management_System.git
 		
 		//Test that if the item have been deleted, the Course_Schedule List arraylist size is decrease by 1 
 		// which in this case is 1 - normal
@@ -133,6 +142,8 @@ public class ManageCourse_ScheduleTest {
 		//arraylist (error - Will display "Course Schedule id not found")
 		//-> If the arraylist is 0 which is checked to be 0, then we do not need to check if 
 		// the deleted schedule id is not used anymore.
+		
+		ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, cs2.getSchedule_id());
 	}
 
 }
