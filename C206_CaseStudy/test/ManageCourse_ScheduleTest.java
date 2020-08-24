@@ -15,7 +15,7 @@ import org.junit.Test;
  *
  * 19030407, Aug 22, 2020 10:56:36 AM
  */
-//By Guang Hao.
+//By Guang Hao..
 public class ManageCourse_ScheduleTest {
 
 	
