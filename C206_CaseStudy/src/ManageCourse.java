@@ -44,6 +44,8 @@ public class ManageCourse {
 
  
 
+        char code1 = Helper.readChar("Enter one character code >");
+        int code2 = Helper.readInt("Enter integer code >");
         String courseCode = Helper.readString("Enter course code > ");
         String courseTitle = Helper.readString("Enter course title > ");
         String categoryName = Helper.readString("Enter category name > ");
@@ -51,26 +53,56 @@ public class ManageCourse {
         String courseDuration = Helper.readString("Enter course duration > ");
         String pre_requisite = Helper.readString("Enter prerequisite course > ");
         
+        if (courseCode.equals(code1 + code2)) {
+            System.out.println("This is a valid course code.");
+        } else {
+            System.out.println("Invalid course code! Try again.");
+        }
+        
         courseList.add(new Course(courseCode, courseTitle, categoryName, courseDescription, courseDuration, pre_requisite));
 
  
 
         ManageCourse.viewCourse(courseList);
         
-        System.out.println("Course added!");        
+        System.out.println("Course added!");
+
+ 
+
+
+        
     }
 
+ 
+
+        /**
+     * 
+     */
     private static void viewCourse(ArrayList<Course> courseList) {
         // TODO Auto-generated method stub
         System.out.println("COURSE LIST");
-        
+
+ 
+
         String output = String.format("%-15s %-15s %-20s %-20s %15s %-15s \n", "COURSE CODE" , "COURSE TITLE", "CATEGORY NAME", "COURSE DESCRIPTION", "COURSE DURATION", "PRE-REQUISITE COURSE");
         
         for (int i = 0; i < courseList.size(); i++) {
             output += String.format("%-15s %-15s %-20s %-20s %15s %-15s \n", courseList.get(i).getCourseCode(), courseList.get(i).getCourseTitle(), courseList.get(i).getCategoryName(), courseList.get(i).getCourseDescription(), courseList.get(i).getCourseDuration(), courseList.get(i).getPrerequisiteCourse());
         }
+        
+        String CourseCode = Helper.readString("Enter a course code to view >");
+        for (int i = 0; i < courseList.size(); i++) {
+            if (CourseCode.equals(null)) {
+                courseList = null;
+            } else if(CourseCode != null) {
+                System.out.println(courseList);
+            }
+        }
+
+ 
+
         System.out.println(output);
-    }
+    } 
 
     private static void deleteCourse(ArrayList<Course> courseList) {
         // TODO Auto-generated method stub
