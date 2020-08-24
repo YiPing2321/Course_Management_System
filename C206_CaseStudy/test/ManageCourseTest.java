@@ -9,6 +9,7 @@ public class ManageCourseTest {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         
+    	
     	@Before 
         public void setUp() throws Exception {
             ArrayList<Course> courseList = new ArrayList<Course>();

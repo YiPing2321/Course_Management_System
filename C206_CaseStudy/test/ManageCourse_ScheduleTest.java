@@ -18,6 +18,7 @@ import org.junit.Test;
 
 public class ManageCourse_ScheduleTest {
 
+	
 	private Course_Schedule cs1;
 	private Course_Schedule cs2;
 	private static DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy, HH:mm");
