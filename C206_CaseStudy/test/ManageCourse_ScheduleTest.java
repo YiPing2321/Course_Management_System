@@ -65,7 +65,7 @@ public class ManageCourse_ScheduleTest {
 		ManageCourse_Schedule.addCSchedule(Course_ScheduleList, cs2);
 		assertEquals("Test that Course_ScheduleList arraylist size is 2", 2, Course_ScheduleList.size());
 		
-		//test if the expected output string same as the list of Course Schedule retrieved from the Case_Study	
+		//test if the expected output string same as the list of Course Schedule retrieved 	
 		allCSchedule= ManageCourse_Schedule.retrieveAllCSchedule(Course_ScheduleList);
 		testOutput = String.format("%-20s %-10.1f %-20s %-20s %-30s\n", "CS001", 25.0, 
 				LocalDateTime.parse("11/08/2020, 08:30", formatter1), 
