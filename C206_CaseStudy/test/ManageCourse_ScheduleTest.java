@@ -95,6 +95,7 @@ public class ManageCourse_ScheduleTest {
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid Course Schedule arraylist to add to", Course_ScheduleList);
 		
+		//-----------------------------------------------------------------------------------------------------------/
 		//For cs1:
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
@@ -108,6 +109,7 @@ public class ManageCourse_ScheduleTest {
 		//Test that start date is before end date for cs1 - normal
 		assertEquals("Check that start date is before end date", true, cs1.getStart_date().isBefore(cs1.getEnd_date()));
 		
+		//-----------------------------------------------------------------------------------------------------------/
 		//For cs2:
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
@@ -121,25 +123,27 @@ public class ManageCourse_ScheduleTest {
 		//Test that start date is before end date for cs2 - normal
 		assertEquals("Check that start date is before end date", true, cs2.getStart_date().isBefore(cs2.getEnd_date()));
 		
-		//For cs3:
+		//-----------------------------------------------------------------------------------------------------------/
+		//For cs3: (Boundary test case for price - price at 0.0 (minimum) 
 		//Add another schedule test The size of the list is 3? -normal
 		//The schedule just added is as same as the second item of the list
 		ManageCourse_Schedule.addCSchedule(Course_ScheduleList, cs3);
 		assertEquals("Check that Course_ScheduleList arraylist size is 3", 3, Course_ScheduleList.size());
-		assertSame("Check that Course Schedule is added", cs3, Course_ScheduleList.get(1));
+		assertSame("Check that Course Schedule is added", cs3, Course_ScheduleList.get(2));
 			
 		//Test that price is not a negative number for cs3 - boundary
 		assertEquals("Check that price is a positive number?", true, cs3.getPrice() >= 0.0);
 					
-		//Test that start date is before end date for cs3 - boundary
+		//Test that start date is before end date for cs3 - error
 		assertEquals("Check that start date is before end date", true, cs3.getStart_date().isBefore(cs3.getEnd_date()));
 		
-		//For cs4:
+		//-----------------------------------------------------------------------------------------------------------/
+		//For cs4: (Error test case for price and date - less than 0.0 and start date/time is after end date/time)
 		//Test that price is not a negative number for cs2 - error
-		assertEquals("Check that price is a positive number?", true, cs1.getPrice() < 0.0);
+		assertEquals("Check that price is a positive number?", true, cs4.getPrice() < 0.0);
 						
 		//Test that start date is before end date for cs2 - error
-		assertEquals("Check that start date is before end date", true, !(cs1.getStart_date().isBefore(cs1.getEnd_date())));
+		assertEquals("Check that start date is before end date", true, !(cs4.getStart_date().isBefore(cs4.getEnd_date())));
 		
 	}
 	
@@ -164,6 +168,7 @@ public class ManageCourse_ScheduleTest {
 		//If the arraylist is 0 which is checked to be 0, then we do not need to check if 
 		// the deleted schedule id is not used anymore.
 		
+		//Test that after the arraylist is null already, deletion can be completed
 		ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, cs2.getSchedule_id());
 	}
 
