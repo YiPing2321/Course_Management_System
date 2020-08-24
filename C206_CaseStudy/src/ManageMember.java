@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * I will not copy or allow others to copy my code.
  * I understand that copying code is considered as plagiarism.
  *
- * 19046377, Aug 22, 2020 7:34:05 AM
+ * 19046377, Aug 24, 2020 3:00:05 AM
  */
 
 //Marvin
@@ -12,7 +12,7 @@ public class ManageMember{
 
 	public static void main(String[] args) {
 		ArrayList<Member> memberList = new ArrayList<Member>(); 
-		int option = -1;
+		int option = 0;
 		while(option != 4) {
 			menu();
 			option = Helper.readInt("Enter option > ");

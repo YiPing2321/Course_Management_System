@@ -6,7 +6,7 @@
  *
  * 19046377, Aug 23, 2020 2:52:08 PM
  */
-
+//Marvin
 public class Member {
 	private String name;
 	private String gender;
