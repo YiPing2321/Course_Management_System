@@ -151,13 +151,12 @@ public class ManageCourse_ScheduleTest {
 	@Test
 	public void deleteCScheduleTest() {
 		retrieveAllCSchedule();
-<<<<<<< HEAD
+
 		// Test if Course Schedule list is not null then they will be able to delete schedule - boundary
 		assertNotNull("Test if there is valid Course Schedule arraylist to delete schedule", Course_ScheduleList);
-=======
+
 		// Test if arraylist is not null - boundary
 		assertNotNull("Test if there is valid Course Schedule arraylist to delete item", Course_ScheduleList);
->>>>>>> branch 'master' of https://github.com/YiPing2321/Course_Management_System.git
 		
 		//Test that if the item have been deleted, the Course_Schedule List arraylist size is decrease by 1 
 		// which in this case is 1 - normal
