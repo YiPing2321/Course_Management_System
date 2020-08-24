@@ -40,10 +40,10 @@ public class ManageCategory {
 				ManageCategory.addCategory(Course_Category, inputCategoryDetails(Course_Category));
 			} else if (option == Option_Delete) {
 				ManageCategory.viewAllCategory(Course_Category);
-				String id = Helper.readString("Enter a Course Schedule ID you wish to delete > ");
+				String id = Helper.readString("Enter a Course Category Name you wish to delete > ");
 				ManageCategory.deleteCategory(Course_Category, id);
 			} else if (option == Option_Quit) {
-				System.out.println("Thank you for Manage Course Schedule service");
+				System.out.println("Thank you for Manage Course Category service");
 			} else {
 				System.out.println("Invalid Option");
 			}
