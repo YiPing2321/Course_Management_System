@@ -24,10 +24,10 @@ public class ManageCourse_Schedule {
 		
 		ArrayList<Course_Schedule> Course_ScheduleList = new ArrayList<Course_Schedule>();
 		
-		Course_ScheduleList.add(new Course_Schedule("CS001", 25.0, LocalDateTime.parse("11/08/2020, 08:30", formatter1), 
+		Course_ScheduleList.add(new Course_Schedule("CS001-R13", 25.0, LocalDateTime.parse("11/08/2020, 08:30", formatter1), 
 				LocalDateTime.parse("12/08/2020, 16:00", formatter1), "W66L"));
 		
-		Course_ScheduleList.add(new Course_Schedule("CS002", 14.0, LocalDateTime.parse("12/08/2020, 09:15", formatter1), 
+		Course_ScheduleList.add(new Course_Schedule("CS002-R13", 14.0, LocalDateTime.parse("12/08/2020, 09:15", formatter1), 
 				LocalDateTime.parse("13/08/2020, 15:30", formatter1), "W64J"));
 		
 		int option = 0;
@@ -99,7 +99,7 @@ public class ManageCourse_Schedule {
 		while (isSame != false) {
 			String output = "";
 			if (isSame == true) {
-				id = Helper.readString("Enter Course Schedule ID (With CS at the front) > ");
+				id = Helper.readString("Enter Course Schedule ID (With CS at the front) with course code (Separate by -) > ");
 				id = id.substring(0, 2).toUpperCase() + id.substring(2);
 				for (int i = 0; i < Course_ScheduleList.size(); i++) {
 					Course_Schedule cs = Course_ScheduleList.get(i);
