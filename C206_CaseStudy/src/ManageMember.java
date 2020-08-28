@@ -80,7 +80,7 @@ public class ManageMember{
 		}
 		
 	}
-	//update password menu
+	//update menu
 	public static void updateMenu() {
 		Helper.line(40, "=");
 		System.out.println("1.Update password");
@@ -110,10 +110,22 @@ public class ManageMember{
 					if(checkEmail.equals(memberList.get(i).getEmail())) {
 						System.out.println(String.format("Current country: %s", memberList.get(i).getCountry()));
 						String newCountry = Helper.readString("Enter new country > ");
-						memberList.get(i).setPassword(newCountry);
+						memberList.get(i).setCountry(newCountry);
 						System.out.println("Country updated successfully");
 					}
 				}
+			}else if(option == 3) {
+				String checkEmail = Helper.readString("Enter email of member account > ");
+				for(int i=0;i<memberList.size();i++) {
+					if(checkEmail.equals(memberList.get(i).getEmail())) {
+						System.out.println(String.format("Current Mobile: %s", memberList.get(i).getMobile_number()));
+						int newMobile = Helper.readInt("Enter new mobile > ");
+						memberList.get(i).setMobile_number(newMobile);
+						System.out.println("Mobile updated successfully");
+					}
+				}
+			}else if(option == 4) {
+				System.out.println("Successfully quit update menu");
 			}
 		}
 	}
