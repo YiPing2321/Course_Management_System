@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * 19012734, Aug 22, 2020 3:03:32 PM
  */
 
+
 public class ManageCourse {
     private static final int Option_Add = 1;
     private static final int Option_View = 2;
