@@ -21,10 +21,6 @@ public class ManageCourse {
     private static final int Option_ViewSchedule = 7;
     private static final int Option_Quit = 8;
 
-
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         ArrayList<Course> courseList = new ArrayList<Course>();

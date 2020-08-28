@@ -16,6 +16,7 @@ public class Course {
         this.PrerequisiteCourse = PrerequisiteCourse;
     }
 
+    
     /**
      * @return the courseCode
      */
