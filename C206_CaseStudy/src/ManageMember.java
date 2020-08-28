@@ -49,12 +49,17 @@ public class ManageMember{
 	public static String retrieveMembers(ArrayList<Member>memberList) {
 		String output = "";
 		for(int i=0;i<memberList.size();i++) {
-			output += String.format("%-10s %-10s %-20d %-20s %-20s %-20s\n",memberList.get(i).getName(),memberList.get(i).getGender(),memberList.get(i).getMobile_number(),memberList.get(i).getEmail(),memberList.get(i).getDob(),memberList.get(i).getCountry());
+			output += String.format("%-10s %-10s %-20d %-20s %-20s %-20s %-20s\n",memberList.get(i).getName(),memberList.get(i).getGender(),memberList.get(i).getMobile_number(),memberList.get(i).getEmail(),memberList.get(i).getDob(),memberList.get(i).getCountry(),memberList.get(i).getPassword());
 		}
 		System.out.println(output);
 		//view by country of residence
+		String filteroutput = "";
 		String cor = Helper.readString("Enter country of residence to filter list by > ");
-		
+		for(int i=0;i<memberList.size();i++) {
+			if(cor.equals(memberList.get(i).getCountry())) {
+				filteroutput += String.format("%-10s %-10s %-20d %-20s %-20s %-20s %-20s\n",memberList.get(i).getName(),memberList.get(i).getGender(),memberList.get(i).getMobile_number(),memberList.get(i).getEmail(),memberList.get(i).getDob(),memberList.get(i).getCountry(),memberList.get(i).getPassword());
+			}
+		}
 		return null;
 	}
 	public static void addMembers(ArrayList<Member>memberList) {
