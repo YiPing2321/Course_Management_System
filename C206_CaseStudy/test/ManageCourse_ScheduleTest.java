@@ -159,7 +159,7 @@ public class ManageCourse_ScheduleTest {
 		//Test that if there are course schedule id have registered member, deletion cannot be continue 
 		// - cs1 of course schedule id (CS001) have 2 registered member -> normal
 		String id = cs1.getSchedule_id();
-		int count = ManageCourse_Schedule.checkMember(cs1.getSchedule_id());
+		int count = ManageCourse_Schedule.checkMember(id);
 		assertTrue("Test if there are registered member? > ", count > 0);
 		
 		//Since there are registered member, deletion cannot be done - normal
@@ -176,7 +176,7 @@ public class ManageCourse_ScheduleTest {
 		//Test that if there are course schedule id have registered member, deletion cannot be continue 
 		// - cs2 of course schedule id (CS002) have 0 registered member -> boundary
 		id = cs2.getSchedule_id();
-		count = ManageCourse_Schedule.checkMember(cs2.getSchedule_id());
+		count = ManageCourse_Schedule.checkMember(id);
 		assertFalse("Test if there are registered member? > ", count > 0);
 		
 		//Since there are 0 registered member, the details can be deleted 
@@ -190,7 +190,7 @@ public class ManageCourse_ScheduleTest {
 		//Test that if there are course schedule id have registered member, deletion cannot be continue 
 		// - cs3 of course schedule id (CS003) have 0 registered member -> boundary
 		id = cs3.getSchedule_id();
-		count = ManageCourse_Schedule.checkMember( cs3.getSchedule_id());
+		count = ManageCourse_Schedule.checkMember(id);
 		assertFalse("Test if there are registered member? > ", count > 0);
 		
 		//Since there are 0 registered member, the details can be deleted 
