@@ -27,20 +27,44 @@ public class Course_Schedule {
 	public String getSchedule_id() {
 		return schedule_id;
 	}
-	
+
 	public double getPrice() {
 		return price;
 	}
-	
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	public LocalDateTime getStart_date() {
 		return start_date;
 	}
-	
+
+	public void setStart_date(LocalDateTime start_date) {
+		this.start_date = start_date;
+	}
+
 	public LocalDateTime getEnd_date() {
 		return end_date;
 	}
-	
+
+	public void setEnd_date(LocalDateTime end_date) {
+		this.end_date = end_date;
+	}
+
 	public String getLocation() {
 		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
+	public String display() {
+		
+		String output = String.format("%-20s %-10.1f %-20s %-20s %-30s\n", schedule_id, price, start_date, end_date, location);
+		
+		return output;
+		
 	}
 }

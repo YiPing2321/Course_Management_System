@@ -12,9 +12,15 @@ import java.util.ArrayList;
 
 public class ManageRegistration {
 	
+	private static ArrayList<Registration> registrationList;
+	
+	public static ArrayList<Registration> getRegistrationList() {
+		return registrationList;
+	}
+
 	public static void main(String[] args) {
 		
-		ArrayList<Registration> registrationList = new ArrayList<Registration>();
+		registrationList = new ArrayList<Registration>();
 
 		int option = 0;
 		

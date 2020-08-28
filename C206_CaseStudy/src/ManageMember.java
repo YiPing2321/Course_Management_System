@@ -9,9 +9,15 @@ import java.util.ArrayList;
 
 //Marvin
 public class ManageMember{
+	
+	private static ArrayList<Member> memberList;
 
+	public static ArrayList<Member> getMemberList() {
+		return memberList;
+	}
+	
 	public static void main(String[] args) {
-		ArrayList<Member> memberList = new ArrayList<Member>(); 
+		memberList = new ArrayList<Member>(); 
 		int option = 0;
 		while(option != 4) {
 			menu();
