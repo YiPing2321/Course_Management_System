@@ -53,8 +53,10 @@ public class ManageCourse_Schedule {
 			
 			if (option == Option_View) {
 				ManageCourse_Schedule.viewAllCSchedule(Course_ScheduleList);
+				
 			} else if (option == Option_Add) {
 				ManageCourse_Schedule.addCSchedule(Course_ScheduleList, inputCScheduleDetails(Course_ScheduleList));
+				
 			} else if (option == Option_Delete) {
 				ManageCourse_Schedule.viewAllCSchedule(Course_ScheduleList);
 				String id = Helper.readString("Enter a Course Schedule ID you wish to delete > ");
@@ -74,6 +76,7 @@ public class ManageCourse_Schedule {
 				
 			} else if (option == Option_Quit) {
 				System.out.println("Thank you for Manage Course Schedule service");
+				
 			} else {
 				System.out.println("Invalid Option");
 			}
