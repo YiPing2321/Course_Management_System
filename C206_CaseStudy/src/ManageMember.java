@@ -19,7 +19,7 @@ public class ManageMember{
 	public static void main(String[] args) {
 		memberList = new ArrayList<Member>(); 
 		int option = 0;
-		while(option != 4) {
+		while(option != 5) {
 			menu();
 			option = Helper.readInt("Enter option > ");
 			
