@@ -16,7 +16,10 @@ public class ManageCourse_Schedule {
 	private static final int Option_View = 1;
 	private static final int Option_Add = 2;
 	private static final int Option_Delete = 3;
-	private static final int Option_Quit = 4;
+	private static final int Option_Update = 4;
+	private static final int Option_SearchByPrice = 5;
+	private static final int Option_SearchByID = 6;
+	private static final int Option_Quit = 7;
 	
 	private static DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy, HH:mm");
 	
@@ -45,6 +48,18 @@ public class ManageCourse_Schedule {
 				ManageCourse_Schedule.viewAllCSchedule(Course_ScheduleList);
 				String id = Helper.readString("Enter a Course Schedule ID you wish to delete > ");
 				ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, id);
+			
+			} else if (option == Option_Update) {
+				String id = Helper.readString("Enter a Course Schedule ID you wish to update > ");
+				//ManageCourse_Schedule.updateCSchedule(Course_ScheduleList, id);
+				
+			} else if (option == Option_SearchByPrice) {
+				double price = Helper.readDouble("Enter a price > ");
+				//ManageCourse_Schedule.SearchByPrice(Course_ScheduleList, price);
+				
+			} else if (option == Option_SearchByID) {
+				String id = Helper.readString("Enter Course Schedule ID to view> ");
+				//ManageCourse_Schedule.viewMemberDetails(Course_ScheduleList, id);
 			} else if (option == Option_Quit) {
 				System.out.println("Thank you for Manage Course Schedule service");
 			} else {
@@ -59,7 +74,10 @@ public class ManageCourse_Schedule {
 		System.out.println("1. View Course Schedule");
 		System.out.println("2. Add Course Schedule");
 		System.out.println("3. Delete Course Schedule");
-		System.out.println("4. Back");
+		System.out.println("4. Update Course Schedule");
+		System.out.println("5. Search Course Schedule by Price");
+		System.out.println("6. Search Member by Schedule Id");
+		System.out.println("7. Back");
 		Helper.line(100, "-");
 	}
 	
