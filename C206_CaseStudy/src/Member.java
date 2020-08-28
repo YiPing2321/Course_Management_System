@@ -14,14 +14,16 @@ public class Member {
 	private String email;
 	private String dob;
 	private String country;
+	private String password;
 	
-	public Member(String name, String gender, int mobile_number, String email, String dob, String country) {
+	public Member(String name, String gender, int mobile_number, String email, String dob, String country,String password) {
 		this.name = name;
 		this.gender = gender;
 		this.mobile_number = mobile_number;
 		this.email = email;
 		this.dob = dob;
 		this.country = country;
+		this.password = password;
 	}
 	
 	public String getName() {
@@ -70,5 +72,11 @@ public class Member {
 	
 	public void setCountry(String c) {
 		this.country = c;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String p) {
+		this.password = p;
 	}
 }
