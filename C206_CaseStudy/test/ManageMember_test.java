@@ -23,8 +23,8 @@ public class ManageMember_test {
 		@Before
 		public void setUp() throws Exception{
 			
-			member1 = new Member("Jade","F",94850592,"jade@rp.edu.sg","05/11/95","Singapore");
-			member2 = new Member("Jack","M",85716392,"Jack@gmail.com","31/03/85","Colombia");
+			member1 = new Member("Jade","F",94850592,"jade@rp.edu.sg","05/11/95","Singapore", "abc123");
+			member2 = new Member("Jack","M",85716392,"Jack@gmail.com","31/03/85","Colombia", "hello");
 			memberList = new ArrayList<Member>();
 	}
 		

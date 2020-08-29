@@ -11,6 +11,12 @@ import java.util.ArrayList;
  */
 //Done by Guang Hao.
 public class ManageCourse_Schedule {
+	//If encounter null pointer exception
+	//Do this as follow below
+	//1.Run the MainMenu class
+	//2.Select Option 1 and quit
+	//3.Select Option 5 and quit
+	//4.Select Option 4 (Manage Course Schedule), and try the option again and error will be resolved
 
 	//Refractor of the option
 	private static final int Option_View = 1;
@@ -23,9 +29,14 @@ public class ManageCourse_Schedule {
 	
 	private static DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy, HH:mm");
 	
+	private static ArrayList<Course_Schedule> Course_ScheduleList;
+	private static ArrayList<Registration> registration;
+	private static ArrayList<Member> member;
+	
 	public static void main(String[] args) {
-		
-		ArrayList<Course_Schedule> Course_ScheduleList = new ArrayList<Course_Schedule>();
+		registration = ManageRegistration.getRegistrationList();
+		member = ManageMember.getMemberList();
+		Course_ScheduleList = new ArrayList<Course_Schedule>();
 		
 		Course_ScheduleList.add(new Course_Schedule("CS001-R13", 25.0, LocalDateTime.parse("11/08/2020, 08:30", formatter1), 
 				LocalDateTime.parse("12/08/2020, 16:00", formatter1), "W66L"));
@@ -42,26 +53,30 @@ public class ManageCourse_Schedule {
 			
 			if (option == Option_View) {
 				ManageCourse_Schedule.viewAllCSchedule(Course_ScheduleList);
+				
 			} else if (option == Option_Add) {
 				ManageCourse_Schedule.addCSchedule(Course_ScheduleList, inputCScheduleDetails(Course_ScheduleList));
+				
 			} else if (option == Option_Delete) {
 				ManageCourse_Schedule.viewAllCSchedule(Course_ScheduleList);
 				String id = Helper.readString("Enter a Course Schedule ID you wish to delete > ");
-				ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, id);
+				ManageCourse_Schedule.deleteCSchedule(Course_ScheduleList, id, ManageCourse_Schedule.checkMember(id));
 			
 			} else if (option == Option_Update) {
 				String id = Helper.readString("Enter a Course Schedule ID you wish to update > ");
-				//ManageCourse_Schedule.updateCSchedule(Course_ScheduleList, id);
+				ManageCourse_Schedule.updateCSchedule(Course_ScheduleList, id);
 				
 			} else if (option == Option_SearchByPrice) {
 				double price = Helper.readDouble("Enter a price > ");
-				//ManageCourse_Schedule.SearchByPrice(Course_ScheduleList, price);
+				ManageCourse_Schedule.SearchByPrice(Course_ScheduleList, price);
 				
 			} else if (option == Option_SearchByID) {
 				String id = Helper.readString("Enter Course Schedule ID to view> ");
-				//ManageCourse_Schedule.viewMemberDetails(Course_ScheduleList, id);
+				ManageCourse_Schedule.viewMemberDetails(Course_ScheduleList, id);
+				
 			} else if (option == Option_Quit) {
 				System.out.println("Thank you for Manage Course Schedule service");
+				
 			} else {
 				System.out.println("Invalid Option");
 			}
@@ -206,37 +221,203 @@ public class ManageCourse_Schedule {
 	
 	//-----------------------------------------------Option 3-------------------------------------------
 	//Done by Guang Hao (Case Study Member 4)
-	public static void deleteCSchedule(ArrayList<Course_Schedule> Course_ScheduleList, String id) {
-		
-		boolean isDeleted = false;
-		String result = "Not found";
-		for (int i = 0; i < Course_ScheduleList.size(); i++) {
-			Course_Schedule cs = Course_ScheduleList.get(i);
-				
-			if (id.equals(cs.getSchedule_id())) {
-				char confirmDeleted = Helper.readChar("Do you want to delete this? (Y/N) > ");
+	public static void deleteCSchedule(ArrayList<Course_Schedule> Course_ScheduleList, String id, int number) {
+		if (number == 0) {
+			
+			boolean isDeleted = false;
+			String result = "Not found";
+			
+			for (int i = 0; i < Course_ScheduleList.size(); i++) {
+				Course_Schedule cs = Course_ScheduleList.get(i);
 					
-				if (confirmDeleted == 'Y' || confirmDeleted == 'y') {
-					Course_ScheduleList.remove(i);
-					isDeleted = true;
-					result = "true";
-				} else if (confirmDeleted == 'N' || confirmDeleted == 'n') {
-					result = "fail";
+				if (id.equals(cs.getSchedule_id())) {
+					char confirmDeleted = Helper.readChar("Do you want to delete this? (Y/N) > ");
+						
+					if (confirmDeleted == 'Y' || confirmDeleted == 'y') {
+						Course_ScheduleList.remove(i);
+						isDeleted = true;
+						result = "true";
+					} else if (confirmDeleted == 'N' || confirmDeleted == 'n') {
+						result = "fail";
+					}
 				}
 			}
-		}
-			
-		if (isDeleted == false && result == "Not found") {
-			System.out.println("**Course Schedule ID not found");
-		} else if (isDeleted == true && result == "true"){
-			System.out.println("**Course Schedule Successfully deleted!!");
+				
+			if (result == "Not found") {
+				System.out.println("**Course Schedule ID not found");
+			} else if (isDeleted == true && result == "true"){
+				System.out.println("**Course Schedule Successfully deleted!!");
+			} else if (isDeleted == false && result == "fail"){
+				System.out.println("**Delete failed");
+			}
 		} else {
-			System.out.println("**Delete failed");
+			System.out.println("**There are " + number + " member(s) registered for the id (" + id + ")");
+		}
+	}
+	
+	public static void updateCSchedule(ArrayList<Course_Schedule> Course_ScheduleList, String id) {
+		
+		boolean isUpdate = false;
+		boolean isFound = false;
+		
+		String output = String.format("%-20s %-10s %-20s %-20s %-30s\n", "Course Schedule Id", "Price", "Start Date/Time",
+				"End Date/Time", "Location");
+		
+		double price = 0.0;
+		String start_dateTime = "01/01/2020, 00:00";
+		String end_dateTime = "01/01/2020, 00:00";
+		String location = "";
+		for (int i = 0; i < Course_ScheduleList.size(); i++) {
+			Course_Schedule cs = Course_ScheduleList.get(i);
+			String schedule_id = id.substring(0, 2).toUpperCase() + id.substring(2);
+			if (cs.getSchedule_id().equals(schedule_id)) {
+				//Retrieve the current details of the schedule id
+				
+				isFound = true;
+				output += cs.display();
+				System.out.println(output);
+				
+				//Ask user to enter new details for price, start & end date/time, location
+				price = ManageCourse_Schedule.Check_InputPrice(Course_ScheduleList);
+				
+				//Ensure that the start date is before the end date
+				LocalDateTime start = LocalDateTime.parse(start_dateTime, formatter1);
+				LocalDateTime end = LocalDateTime.parse(end_dateTime, formatter1);
+
+				boolean isBeforeStart = true;
+				while (isBeforeStart != false) {
+					start_dateTime = Helper.readString("Enter Start Date and Timing (dd/MM/yyyy, HH:mm) > ");
+					end_dateTime = Helper.readString("Enter End Date and Timing (dd/MM/yyyy, HH:mm) > ");
+					
+					start = LocalDateTime.parse(start_dateTime, formatter1);
+					end = LocalDateTime.parse(end_dateTime, formatter1);
+					
+					if ((start.isAfter(end))) {
+						System.out.println("**Start date should be before end date");
+						
+						isBeforeStart = true;
+					} else {
+						isBeforeStart = false;
+					}
+					
+					
+				}
+				
+				location = Helper.readString("Enter location > ");
+				
+				//Update the details to the arraylist
+				cs.setPrice(price);
+				cs.setStart_date(start);
+				cs.setEnd_date(end);
+				cs.setLocation(location);
+				
+				isUpdate = true;
+			}
+		}
+		
+		if (isUpdate == true && isFound == true) {
+			System.out.println("**Update Successful");
+		} else if (isUpdate == false && isFound == true){
+			System.out.println("**Update Failed");
+		} else if (isFound == false) {
+			System.out.println("**Course Schedule id not found");
 		}
 		
 		
+	}
+	
+	public static void SearchByPrice(ArrayList<Course_Schedule> Course_ScheduleList, double price) {
+		
+		boolean isFound = false;
+		
+		if (price > 0.0) {
+			
+			String output = String.format("%-20s %-10s %-20s %-20s %-30s\n", "Course Schedule Id", "Price", "Start Date/Time",
+					"End Date/Time", "Location");
+			
+			for (int i = 0; i < Course_ScheduleList.size(); i++) {
+				Course_Schedule cs = Course_ScheduleList.get(i);
+				
+				if (cs.getPrice() == price) {
+					
+					output += cs.display();
+					isFound = true;
+				}
+			}
+			
+			if (isFound == true) {
+				System.out.println(output);
+			
+			} else if (isFound == false){
+				System.out.println("**No course schedule details relating to this price found");
+			}
+		} else {
+			System.out.println("**Price cannot be zero or negative amount");
+		}
 		
 		
+	}
+	
+	public static int checkMember(String id) {
+		
+		int count = 0;
+		for (int i = 0; i < registration.size(); i++) {
+			Registration r =  registration.get(i);
+			
+			if (r.getSchedule_id().equals(id)) {
+				
+				count++;
+			}
+		}
+		return count;
+		
+		
+	}
+	
+	public static void viewMemberDetails(ArrayList<Course_Schedule> Course_ScheduleList, String id) {
+		try {
+			boolean isFound = false;
+			boolean result = false;
+			
+			String output = String.format("%-15s %-10s %-20s %-20s %-15s %-20s\n", "NAME", "GENDER", "MOBILE NUMBER",
+						"EMAIL", "DATE OF BIRTH", "COUNTRY");
+			
+			for (int b = 0; b < Course_ScheduleList.size(); b++) {
+				if (Course_ScheduleList.get(b).getSchedule_id().equals(id)) {
+					result = true;
+				}
+			}
+			
+			for (int i = 0; i < registration.size(); i++) {
+				Registration r =  registration.get(i);
+					
+				if (r.getSchedule_id().equals(id)) {
+						
+					for (int a = 0; a < member.size(); a++) {
+							
+						Member m = member.get(a);
+						if (m.getEmail().equals(r.getEmail())) {
+							isFound = true;
+							output += String.format("%-15s %-10s %-20d %-20s %-15s %-20s\n", m.getName(), m.getGender(),
+										m.getMobile_number(), m.getEmail(), m.getDob(), m.getCountry());
+						}
+					}
+				}
+			}
+				
+			System.out.println(output);
+			if (isFound == false && result == true) {	
+				System.out.println("**Course Schedule id exist in Course Schedule but no one registered yet");
+			} 
+		
+		
+			if (result == false) {
+				System.out.println("Course Schedule id is not found");
+			}
+		} catch (NullPointerException npe) {
+			System.out.println("\nTo solve the error:\n1.Run the MainMenu class\n2.Select Option 1 and quit\n"
+					+ "3.Select Option 5 and quit\n4.Select Option 4 (Manage Course Schedule) and error will be resolved\n");
+		}
 	}
 
 }
