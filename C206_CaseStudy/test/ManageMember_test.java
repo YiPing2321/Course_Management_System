@@ -30,8 +30,7 @@ public class ManageMember_test {
 			//test boundary
 			member3 = new Member("Robbie","M",99172530,"robbie@hotmail.com","22/03/82","England","byebye");
 			//test error
-			member4 = new Member("Sarah","F",87251430,"sarah@outlook.com","11/08/76","Malaysia","nice");
-					
+			member4 = new Member("Sarah","F",87251430,"sarah@outlook.com","11/08/76","Malaysia","nice");		
 			
 			memberList = new ArrayList<Member>();
 	}
