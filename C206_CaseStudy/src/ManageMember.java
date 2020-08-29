@@ -18,6 +18,10 @@ public class ManageMember{
 	
 	public static void main(String[] args) {
 		memberList = new ArrayList<Member>(); 
+		
+		memberList.add(new Member("Jade","F",94850592,"jade@rp.edu.sg","05/11/95","Singapore", "abc123"));
+		memberList.add(new Member("Jack","M",85716392,"Jack@gmail.com","31/03/85","Colombia", "hello"));
+		
 		int option = 0;
 		while(option != 5) {
 			menu();
