@@ -84,7 +84,6 @@ public class ManageMember{
 			}
 		}
 		return email;
-		
 	}
 	
 	public static String retrieveMembers(ArrayList<Member>memberList) {
