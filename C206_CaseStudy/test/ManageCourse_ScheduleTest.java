@@ -17,6 +17,12 @@ import org.junit.Test;
  */
 //By Guang Hao..
 public class ManageCourse_ScheduleTest {
+	//To Run everything successfully
+	//When you will see the main menu
+	//Select Option 1 (Manage Member) and quit
+	//Select Option 5 (Manage Registration) and quit
+	//Select Option 4 (Manage Course Schedule) and quit
+	//Now you will only need to just press the quit everytime the main menu appears
 
 	private static final String[] args = null;
 	private Course_Schedule cs1;
