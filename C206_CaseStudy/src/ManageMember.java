@@ -60,6 +60,7 @@ public class ManageMember{
 				filteroutput += String.format("%-10s %-10s %-20d %-20s %-20s %-20s %-20s\n",memberList.get(i).getName(),memberList.get(i).getGender(),memberList.get(i).getMobile_number(),memberList.get(i).getEmail(),memberList.get(i).getDob(),memberList.get(i).getCountry(),memberList.get(i).getPassword());
 			}
 		}
+		System.out.println(filteroutput);
 		return null;
 	}
 	public static void addMembers(ArrayList<Member>memberList) {
