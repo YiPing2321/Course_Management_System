@@ -200,10 +200,10 @@ public class ManageRegistration {
         					String checkRegistrationNo = Helper.readString("Enter Registration No > ");
         					for(int i=0; i < registrationList.size();i++) {
         						if(checkRegistrationNo.equals(registrationList.get(i).getRegistration_no())) {
-        							System.out.println(String.format("Current Status: ", registrationList.get(i).getStatus()));
+        							System.out.println(String.format("Current Status: %s", registrationList.get(i).getStatus()));
         							String newStatus = Helper.readString("Enter new Status > ");
 									registrationList.get(i).setStatus(newStatus);
-        							System.out.println("Password updated successfully");
+        							System.out.println("Status updated successfully");
         						}
         					}
         				
