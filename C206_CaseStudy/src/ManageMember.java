@@ -41,7 +41,7 @@ public class ManageMember{
 				ManageMember.updateMembers(memberList);
 				
 			}else if (option == 5) {
-				
+				ManageMember.viewCourses(memberList);
 				
 			}else if (option == 6) {
 				System.out.println("Successfully quit from system");
@@ -84,7 +84,6 @@ public class ManageMember{
 			}
 		}
 		return email;
-		
 	}
 	
 	public static String retrieveMembers(ArrayList<Member>memberList) {
@@ -125,9 +124,10 @@ public class ManageMember{
 			if(email.equals(memberList.get(i).getEmail())) {
 				if(email.equals(registered.get(i).getEmail())) {
 					System.out.println("Member has registered for course and cannot be deleted");
-				}
-//				memberList.remove(i);
-//				System.out.println("Member deleted");
+				}else {
+					memberList.remove(i);
+					System.out.println("Member deleted");
+				}				
 			}
 		}
 		
@@ -181,7 +181,15 @@ public class ManageMember{
 			}
 		}
 	}
-	
+	public static void viewCourses(ArrayList<Member>memberList) {
+		String email = Helper.readString("Enter member's email to view upcoming courses > ");
+		for(int i=0;i<memberList.size();i++) {
+			if(email.equals(registered.get(i).getEmail())) {
+				System.out.println(String.format("%-20s %-20s %-20s %-20s %-20s %-20s", "NAME","EMAIL","COURSE NO","STATUS","START DATE","END DATE"));
+				System.out.println(String.format("%-20s %-20s %-20s %-20s %-20s %-20s\n", memberList.get(i).getName(),memberList.get(i).getEmail(),registered.get(i).getRegistration_no(),registered.get(i).getStatus(),registered.get(i).getStart_date(),registered.get(i).getEnd_date()));
+			}
+		}
+	}
 	
 	
 }

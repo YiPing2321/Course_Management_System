@@ -18,13 +18,20 @@ public class ManageMember_test {
 
 		private static Member member1;
 		private static Member member2;
+		private static Member member3;
+		private static Member member4;
 		private ArrayList<Member> memberList; 	
 			
 		@Before
 		public void setUp() throws Exception{
-			
+			//test normal 
 			member1 = new Member("Jade","F",94850592,"jade@rp.edu.sg","05/11/95","Singapore", "abc123");
 			member2 = new Member("Jack","M",85716392,"Jack@gmail.com","31/03/85","Colombia", "hello");
+			//test boundary
+			member3 = new Member("Robbie","M",99172530,"robbie@hotmail.com","22/03/82","England","byebye");
+			//test error
+			member4 = new Member("Sarah","F",87251430,"sarah@outlook.com","11/08/76","Malaysia","nice");		
+			
 			memberList = new ArrayList<Member>();
 	}
 		
