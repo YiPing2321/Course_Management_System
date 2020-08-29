@@ -72,7 +72,11 @@ public class ManageRegistration {
 		System.out.println("1. Register for course schedule");
 		System.out.println("2. View all registration ");
 		System.out.println("3. Delete registration");
-		System.out.println("4. Quit");
+		System.out.println("4. Update registration Status");
+		System.out.println("5. Search registration by Schedule ID");
+
+		
+		System.out.println("6. Quit");
 	}
 	
 	//method to check for unique registration no
@@ -235,5 +239,7 @@ public class ManageRegistration {
             }
         }
         
-    }
 	}
+}
+	
+
