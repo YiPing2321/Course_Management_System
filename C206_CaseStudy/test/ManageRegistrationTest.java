@@ -15,8 +15,8 @@ public class ManageRegistrationTest {
 	@Before
 	public void setUp() throws Exception {
 		
-		r1 = new Registration(1, "CS001", "ABC@gmail.com", "Pending", "1/08/2020", "15/08/2020");
-		r2 = new Registration(2, "CS002", "EFG@gmail.com", "Pending", "1/08/2020", "31/08/2020");
+		r1 = new Registration(1, "CS001-R13", "jade@rp.edu.sg", "Pending", "1/08/2020", "15/08/2020");
+		r2 = new Registration(2, "CS002-R13", "Jack@gmail.com", "Pending", "1/08/2020", "31/08/2020");
 		
 		registrationList = new ArrayList<Registration>();
 	}
@@ -50,9 +50,9 @@ public class ManageRegistrationTest {
 		
 		//test if the expected output string same as the list of Course Registration retrieved from the Case_Study - 	
 		allRegistration = ManageRegistration.retrieveAllRegistration(registrationList);
-		testOutput = String.format("%-20s %-10.2f %-20s %-20s %-30s\n", 1, "CS001", "ABC@gmail.com", "Pending", "1/08/2020", "15/08/2020");
+		testOutput = String.format("%-20s %-10.2f %-20s %-20s %-30s\n", 1, "CS001-R13", "jade@rp.edu.sg", "Pending", "1/08/2020", "15/08/2020");
 		
-		testOutput += String.format("%-20s %-10.2f %-20s %-20s %-30s\n", 2, "CS002", "EFG@gmail.com", "Pending", "1/08/2020", "31/08/2020");
+		testOutput += String.format("%-20s %-10.2f %-20s %-20s %-30s\n", 2, "CS002-R13", "Jack@gmail.com", "Pending", "1/08/2020", "31/08/2020");
 	
 		assertEquals("Test that ViewAllRegistration", testOutput, allRegistration);
 		

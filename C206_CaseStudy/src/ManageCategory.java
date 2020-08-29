@@ -17,7 +17,9 @@ public class ManageCategory {
 	private static final int Option_View = 1;
 	private static final int Option_Add = 2;
 	private static final int Option_Delete = 3;
-	private static final int Option_Quit = 4;
+	private static final int Option_Update = 4;
+	private static final int Option_SearchByName = 5;
+	private static final int Option_Quit = 6 ;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -42,6 +44,12 @@ public class ManageCategory {
 				ManageCategory.viewAllCategory(Course_Category);
 				String id = Helper.readString("Enter a Course Category Name you wish to delete > ");
 				ManageCategory.deleteCategory(Course_Category, id);
+			} else if (option == Option_Update) {
+				String name = Helper.readString("Enter a Course Category Name you wish to update > ");
+				ManageCategory.updateCategory(Course_Category, name);				
+			} else if (option == Option_SearchByName) {
+				String name = Helper.readString("Enter a name > ");
+				ManageCategory.SearchByName(Course_Category, name);
 			} else if (option == Option_Quit) {
 				System.out.println("Thank you for Manage Course Category service");
 			} else {
@@ -55,7 +63,9 @@ public class ManageCategory {
 		System.out.println("1. View Course Category");
 		System.out.println("2. Add Course Category");
 		System.out.println("3. Delete Course Category");
-		System.out.println("4. Back");
+		System.out.println("4. Update Course Category");
+		System.out.println("5. Search Course Category by Name");
+		System.out.println("6. Back");
 		Helper.line(100, "-");
 	}
 	
@@ -144,4 +154,70 @@ public class ManageCategory {
 	}
 
 
+	public static void updateCategory(ArrayList<Course_Category> Course_Category, String name) {
+		
+		boolean isUpdate = false;
+		boolean isFound = false;
+		
+		String output = String.format("%-20s %-20s \n", "Category name", "Category description");
+		
+		String description = "";
+		for (int i = 0; i < Course_Category.size(); i++) {
+			Course_Category cc = Course_Category.get(i);
+			if (cc.getCourse_name().equals(name)) {
+				//Retrieve the current details of the category
+				
+				isFound = true;
+				output += cc.display();
+				
+				
+				
+				
+				System.out.println(output);
+				description = Helper.readString("Enter description > ");
+				
+				
+				
+				//Update the details to the arraylist
+				cc.setCourse_description(description);
+				
+				isUpdate = true;
+			} 
+		}
+		if (isFound == false) {
+			System.out.println("Not found");
+		}
+ 	}
+	
+	public static void SearchByName(ArrayList<Course_Category> Course_Category, String name) {
+		
+		boolean isFound = false;
+		
+			
+		String output = String.format("%-20s %-20s \n", "Category name", "Category description");
+			
+		for (int i = 0; i < Course_Category.size(); i++) {
+			Course_Category cc = Course_Category.get(i);
+				
+			if (cc.getCourse_name().contentEquals(name)) {
+					
+				output += cc.display();
+				isFound = true;
+			}
+		
+		}	
+		if (isFound == true) {
+			System.out.println(output);
+		
+		}
+			
+		else if (isFound == false){
+			System.out.println("**No course category details relating to this name found");
+		}
+		
+		
+		
+	}
+	
+	
 }

@@ -12,9 +12,18 @@ import java.util.ArrayList;
 
 public class ManageRegistration {
 	
+	private static ArrayList<Registration> registrationList;
+	
+	public static ArrayList<Registration> getRegistrationList() {
+		return registrationList;
+	}
+
 	public static void main(String[] args) {
 		
-		ArrayList<Registration> registrationList = new ArrayList<Registration>();
+		registrationList = new ArrayList<Registration>();
+		
+		registrationList.add(new Registration(1, "CS001-R13", "jade@rp.edu.sg", "Pending", "1/08/2020", "15/08/2020"));
+		registrationList.add(new Registration(2, "CS001-R13", "Jack@gmail.com", "Pending", "1/08/2020", "31/08/2020"));
 
 		int option = 0;
 		
