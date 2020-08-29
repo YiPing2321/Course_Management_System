@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 //Marvin
 public class ManageMember{
-	
+	private static ArrayList<Registration> registered;
 	private static ArrayList<Member> memberList;
 
 	public static ArrayList<Member> getMemberList() {
@@ -17,6 +17,7 @@ public class ManageMember{
 	}
 	
 	public static void main(String[] args) {
+		registered = ManageRegistration.getRegistrationList();
 		memberList = new ArrayList<Member>(); 
 		
 		memberList.add(new Member("Jade","F",94850592,"jade@rp.edu.sg","05/11/95","Singapore", "abc123"));
@@ -122,8 +123,11 @@ public class ManageMember{
 		String email = Helper.readString("Enter email corresponding to the account >");
 		for(int i=0;i<memberList.size();i++) {
 			if(email.equals(memberList.get(i).getEmail())) {
-				memberList.remove(i);
-				System.out.println("Member deleted");
+				if(email.equals(registered.get(i).getEmail())) {
+					System.out.println("Member has registered for course and cannot be deleted");
+				}
+//				memberList.remove(i);
+//				System.out.println("Member deleted");
 			}
 		}
 		
