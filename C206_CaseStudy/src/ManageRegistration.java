@@ -197,9 +197,9 @@ public class ManageRegistration {
         				option = Helper.readInt("Enter option > ");
         				
         				if(option == 1) {
-        					String checkRegistrationNo = Helper.readString("Enter Updated Status > ");
+        					String checkRegistrationNo = Helper.readString("Enter Registration No > ");
         					for(int i=0; i < registrationList.size();i++) {
-        						if(checkRegistrationNo.equals(registrationList.get(i).getStatus())) {
+        						if(checkRegistrationNo.equals(registrationList.get(i).getRegistration_no())) {
         							System.out.println(String.format("Current Status: ", registrationList.get(i).getStatus()));
         							String newStatus = Helper.readString("Enter new Status > ");
 									registrationList.get(i).setStatus(newStatus);
