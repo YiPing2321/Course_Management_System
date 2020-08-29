@@ -21,6 +21,9 @@ public class ManageRegistration {
 	public static void main(String[] args) {
 		
 		registrationList = new ArrayList<Registration>();
+		
+		registrationList.add(new Registration(1, "CS001-R13", "jade@rp.edu.sg", "Pending", "1/08/2020", "15/08/2020"));
+		registrationList.add(new Registration(2, "CS002-R13", "Jack@gmail.com", "Pending", "1/08/2020", "31/08/2020"));
 
 		int option = 0;
 		
