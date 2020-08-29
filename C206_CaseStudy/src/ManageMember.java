@@ -40,6 +40,9 @@ public class ManageMember{
 				ManageMember.updateMembers(memberList);
 				
 			}else if (option == 5) {
+				
+				
+			}else if (option == 6) {
 				System.out.println("Successfully quit from system");
 			}
 		}
@@ -53,9 +56,36 @@ public class ManageMember{
 			System.out.println("2.Add member");
 			System.out.println("3.Delete member");
 			System.out.println("4.Update member");
-			System.out.println("5.Quit");
+			System.out.println("5.List all upcoming courses of a member");
+			System.out.println("6.Quit");
 		
 	}
+	//method to check for unique email
+	public static String checkEmail(ArrayList<Member>memberList) {
+		String email = "";
+		boolean unique = true;
+		while (unique != false) {
+			String output = "";
+			if(unique == true) {
+				email = Helper.readString("Enter unique email > ");
+				for(int i=0;i<memberList.size();i++) {
+					Member m = memberList.get(i);
+					
+					if(m.getEmail().equals(email)) {
+						System.out.println("Email has been used.");
+						unique = true;
+						output += m.getEmail();
+					}
+				}
+			}
+			if (output == "") {
+				unique = false;
+			}
+		}
+		return email;
+		
+	}
+	
 	public static String retrieveMembers(ArrayList<Member>memberList) {
 		String output = "";
 		for(int i=0;i<memberList.size();i++) {
@@ -74,6 +104,8 @@ public class ManageMember{
 		return null;
 	}
 	public static void addMembers(ArrayList<Member>memberList) {
+		String uniquemail = checkEmail(memberList);
+		
 		String name = Helper.readString("Enter Name >");
 		String gender = Helper.readString("Enter Gender M/F > ");
 		int mobile = Helper.readInt("Enter mobile number > ");
