@@ -27,7 +27,7 @@ public class Course_Category {
 	
 	public String display() {
 		
-		String output = String.format("%-20s %-20s \n", "Category name", "Category description");
+		String output = String.format("%-20s %-20s \n", course_name, course_description);
 		
 		return output;
 	}

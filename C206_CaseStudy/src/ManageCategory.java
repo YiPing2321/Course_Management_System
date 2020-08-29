@@ -172,9 +172,9 @@ public class ManageCategory {
 				
 				
 				
-				description = Helper.readString("Enter description > ");
-				System.out.println(output);
 				
+				System.out.println(output);
+				description = Helper.readString("Enter description > ");
 				
 				
 				
@@ -182,11 +182,12 @@ public class ManageCategory {
 				cc.setCourse_description(description);
 				
 				isUpdate = true;
-			} else {
-				System.out.println("Not found");
-			}
+			} 
 		}
-	}
+		if (isFound == false) {
+			System.out.println("Not found");
+		}
+ 	}
 	
 	public static void SearchByName(ArrayList<Course_Category> Course_Category, String name) {
 		
