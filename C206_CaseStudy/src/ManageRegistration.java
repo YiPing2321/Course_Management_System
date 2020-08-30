@@ -52,7 +52,7 @@ public class ManageRegistration {
 			
 			} else if (option == 5) {
 				String schedule_id = Helper.readString("Enter a schedule ID > ");
-				ManageRegistration.SearchBySchedule_id(registrationList);
+				ManageRegistration.SearchBySchedule_id(registrationList, schedule_id);
 			
 	
 			} else if (option == 6) {
@@ -215,21 +215,19 @@ public class ManageRegistration {
         	   }
            
 	
-	public static void SearchBySchedule_id(ArrayList<Registration> registrationList) {
+	public static void SearchBySchedule_id(ArrayList<Registration> registrationList, String searchId) {
         // TODO Auto-generated method stub
         Helper.line(20, "=");
         System.out.println("Search registration by schedule id");
         Helper.line(20, "=");
         
-        String searchId = Helper.readString("Enter schedule id to search >");
-        
         String output = "";
-		output += String.format("%-20s %-10s %-20s %-20s %-20s %-20s\n", "REGISTRATION_ID", "SCHEDULE_ID", "EMAIL", "STATUS", "START DATE", "ENDDATE");        
-		
+	output += String.format("%-20s %-10s %-20s %-20s %-20s %-20s\n", "REGISTRATION_ID", "SCHEDULE_ID", "EMAIL", "STATUS", "START DATE", "ENDDATE");        
+        
         for (int i = 0; i < registrationList.size(); i++) {
             if (registrationList.get(i).getSchedule_id().equals(searchId)) {
                 if (registrationList.get(i).getSchedule_id().contains(searchId)) {
-                	Registration r = registrationList.get(i);
+                    Registration r  = registrationList.get(i);
     				output  += String.format("%-20s %-10s %-20s %-20s %-20s %-20s\n", r.getRegistration_no(), r.getSchedule_id(), r.getEmail(), r.getStatus(), r.getStart_date(), r.getEnd_date());
                     System.out.println(output);
                     
@@ -239,7 +237,7 @@ public class ManageRegistration {
             }
         }
         
-	}
+    }
 }
 	
 
