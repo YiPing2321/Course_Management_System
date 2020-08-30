@@ -126,6 +126,7 @@ public class ManageCourse_CategoryTest {
 		ManageCategory.updateCategory(Course_Category, cc1.getCourse_name()); //normal
 		
 		//Test that new description cannot be typed if category name does not exist.
+		String name = "notExist";
 		assertTrue("Check that new description cannot be typed if category name does not exist ", cc1.getCourse_name() == name);
 		//boundary condition
 		
@@ -136,6 +137,7 @@ public class ManageCourse_CategoryTest {
 		ManageCategory.updateCategory(Course_Category, cc2.getCourse_name()); //normal
 		
 		//Test that new description cannot be typed if category name does not exist.
+		name = "notExist2";
 		assertTrue("Check that new description cannot be typed if category name does not exist ", cc1.getCourse_name() == name);
 		//boundary condition
 		
@@ -155,10 +157,10 @@ public class ManageCourse_CategoryTest {
 		
 		//Test if the user entered a name that is a number - error
 		//Print "Name cannot be a number" if condition met
-		name = 0.0;
+		name = "0.0";
 		ManageCategory.SearchByName(Course_Category, name);
 		
-		name = -10;
+		name = "-10";
 		ManageCategory.SearchByName(Course_Category, name);;
 	}
 	
