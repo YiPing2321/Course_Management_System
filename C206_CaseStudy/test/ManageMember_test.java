@@ -15,7 +15,8 @@ import org.junit.Test;
  */
 
 public class ManageMember_test {
-
+	
+		private static final String[] args = null;
 		private static Member member1;
 		private static Member member2;
 		private static Member member3;
@@ -24,6 +25,7 @@ public class ManageMember_test {
 			
 		@Before
 		public void setUp() throws Exception{
+			C206_CaseStudy.main(args);
 			//test normal 
 			member1 = new Member("Jade","F",94850592,"jade@rp.edu.sg","05/11/95","Singapore", "abc123");
 			member2 = new Member("Jack","M",85716392,"Jack@gmail.com","31/03/85","Colombia", "hello");
@@ -39,16 +41,26 @@ public class ManageMember_test {
 	public void tearDown() throws Exception {
 		member1 = null;
 		member2 = null;
+		member3 = null;
 		memberList = null;
 	}
 	@Test
 	public void retrieveAllMembersTest() {
 		//Test if list is not null but empty (boundary)
 		assertNotNull("Test if there is valid Member arraylist to retrieve",memberList);
-		//Test if retrieved arraylist is empty
+		
+		//Test if retrieved arraylist is empty (boundary)
 		String members = ManageMember.retrieveMembers(memberList);
 		String output = "";
-		assertEquals("Test the retrieved memberlist is empty",output,members);
+		assertEquals("Test the retrieved memberlist equal 0",output,members);
+		
+		//Test that member email is not the same (error)
+		assertEquals("Test both member email is not the same",true,member1.getEmail() != member2.getEmail());
+		
+		//Test that arrayList is 2 after adding new members (normal)
+		memberList.add(member1);
+		memberList.add(member2);
+		assertNotEquals("Test that arraylist size not equal 0",0,memberList.size());
 	}
 	@Test
 	public void addMembersTest() {
@@ -69,7 +81,14 @@ public class ManageMember_test {
 		assertEquals("Check that memberList arraylist size is 0", 0, memberList.size());
 		
 	}
-	
+	@Test
+	public void updateMembersTest() {
+		
+	}
+	@Test
+	public void viewCoursesTest() {
+		
+	}
 	
 }
 
