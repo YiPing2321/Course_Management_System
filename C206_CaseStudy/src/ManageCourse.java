@@ -11,7 +11,6 @@ import java.util.ArrayList;
  * 19012734, Aug 22, 2020 3:03:32 PM
  */
 
-
 public class ManageCourse {
     private static final int Option_Add = 1;
     private static final int Option_View = 2;
@@ -22,6 +21,10 @@ public class ManageCourse {
     private static final int Option_ViewSchedule = 7;
     private static final int Option_Quit = 8;
 
+
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         ArrayList<Course> courseList = new ArrayList<Course>();
@@ -59,7 +62,8 @@ public class ManageCourse {
             } else if (option == Option_Update) {
                 UpdateCourse(courseList);
             } else if (option == Option_Search) {
-                SearchCourseByCategoryName(courseList);
+                String searchName = Helper.readString("Enter category name to search >");
+                SearchCourseByCategoryName(courseList, searchName);
             } else if (option == Option_Delete) {
                 ManageCourse.DeleteCourse(courseList, Course_ScheduleList);
             } else if (option == Option_ViewSchedule) {
@@ -74,8 +78,12 @@ public class ManageCourse {
 
     }
 
+
+        /**
+     * 
+     */
     @SuppressWarnings("unlikely-arg-type")
-    private static void addCourse(ArrayList<Course> courseList) {
+    public static void addCourse(ArrayList<Course> courseList) {
         // TODO Auto-generated method stub
         Helper.line(40, "=");
         System.out.println("ADDING COURSE");
@@ -103,10 +111,13 @@ public class ManageCourse {
         ManageCourse.viewCourse(courseList);
         
         System.out.println("Course added!");
+
+
+
         
     }
 
-    private static void viewCourse(ArrayList<Course> courseList) {
+    public static void viewCourse(ArrayList<Course> courseList) {
         // TODO Auto-generated method stub
         System.out.println("COURSE LIST");
 
@@ -127,8 +138,8 @@ public class ManageCourse {
         }
         System.out.println(output);
     }
-    
-    private static void deleteCourse(ArrayList<Course> courseList) {
+
+    public static void deleteCourse(ArrayList<Course> courseList) {
         // TODO Auto-generated method stub
         String code = Helper.readString("Enter course code > ");
         char confirm = Helper.readChar("Are you sure you want to delete this course? (y/n) >");
@@ -146,8 +157,8 @@ public class ManageCourse {
         }
         
     }
-
-    private static void UpdateCourse(ArrayList<Course> courseList) {
+    
+    public static void UpdateCourse(ArrayList<Course> courseList) {
         // TODO Auto-generated method stub
         String code = Helper.readString("Enter course code >");
         
@@ -190,14 +201,12 @@ public class ManageCourse {
         }
         ManageCourse.viewCourse(courseList);
     }
-        
-    private static void SearchCourseByCategoryName(ArrayList<Course> courseList) {
+       
+    public static void SearchCourseByCategoryName(ArrayList<Course> courseList, String searchName) {
         // TODO Auto-generated method stub
         Helper.line(20, "=");
         System.out.println("Search course by category name");
         Helper.line(20, "=");
-        
-        String searchName = Helper.readString("Enter category name to search >");
         
         String output = String.format("%-15s %-30s %-20s %-50s %20s %-20s \n", "COURSE CODE" , "COURSE TITLE", "CATEGORY NAME", "COURSE DESCRIPTION", "COURSE DURATION", "PRE-REQUISITE COURSE");
         
@@ -215,7 +224,7 @@ public class ManageCourse {
         
     }
 
-    private static void DeleteCourse(ArrayList<Course> courseList, ArrayList<Course_Schedule> Course_ScheduleList) {
+    public static void DeleteCourse(ArrayList<Course> courseList, ArrayList<Course_Schedule> Course_ScheduleList) {
         // TODO Auto-generated method stub
         String code = Helper.readString("Enter course code > ");
         char confirm = Helper.readChar("Are you sure you want to delete this course? (y/n) >");
@@ -232,7 +241,7 @@ public class ManageCourse {
         
     }
 
-    private static void ViewCourseSchedule(ArrayList<Course> courseList, ArrayList<Course_Schedule> Course_ScheduleList) {
+    public static void ViewCourseSchedule(ArrayList<Course> courseList, ArrayList<Course_Schedule> Course_ScheduleList) {
         // TODO Auto-generated method stub
         System.out.println("COURSE SCHEDULE LIST");
         

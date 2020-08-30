@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class ManageRegistration {
 	
 	private static ArrayList<Registration> registrationList;
+	private static ArrayList<Member> member;
+
 	
 	public static ArrayList<Registration> getRegistrationList() {
 		return registrationList;
@@ -22,12 +24,14 @@ public class ManageRegistration {
 		
 		registrationList = new ArrayList<Registration>();
 		
-		registrationList.add(new Registration(1, "CS001-R13", "jade@rp.edu.sg", "Pending", "1/08/2020", "15/08/2020"));
-		registrationList.add(new Registration(2, "CS001-R13", "Jack@gmail.com", "Pending", "1/08/2020", "31/08/2020"));
+		member = ManageMember.getMemberList();
+		
+		registrationList.add(new Registration("A1", "CS001-R13", "jade@rp.edu.sg", "Pending", "1/08/2020", "15/08/2020"));
+		registrationList.add(new Registration("A2", "CS001-R13", "Jack@gmail.com", "Pending", "1/08/2020", "31/08/2020"));
 
 		int option = 0;
 		
-		while (option != 4) {
+		while (option != 6) {
 			
 			ManageRegistration.RegistrationMenu();
 			option = Helper.readInt("Enter an option > ");
@@ -40,17 +44,26 @@ public class ManageRegistration {
 				
 			} else if (option == 3) {
 				ManageRegistration.viewAllRegistration(registrationList);
-				int registration_id = Helper.readInt("Enter a Registration ID you wish to delete > ");
+				String registration_id = Helper.readString("Enter a Registration ID you wish to delete > ");
 				ManageRegistration.deleteRegistration(registrationList, registration_id);
 				
 			} else if (option == 4) {
+				ManageRegistration.updateRegistration(registrationList);
+			
+			} else if (option == 5) {
+				String schedule_id = Helper.readString("Enter a schedule ID > ");
+				ManageRegistration.SearchBySchedule_id(registrationList);
+			
+	
+			} else if (option == 6) {
 				  System.out.println("Thank you for using this system!");
             } else {
                 System.out.println("Invalid option");
             }
         }
-    }
+	}
 				
+
 	public static void RegistrationMenu() {
 		Helper.line(50, "=");
 		System.out.println("REGISTRATION MANAGEMENT");
@@ -59,8 +72,38 @@ public class ManageRegistration {
 		System.out.println("1. Register for course schedule");
 		System.out.println("2. View all registration ");
 		System.out.println("3. Delete registration");
-		System.out.println("4. Quit");
+		System.out.println("4. Update registration Status");
+		System.out.println("5. Search registration by Schedule ID");
+
+		
+		System.out.println("6. Quit");
 	}
+	
+	//method to check for unique registration no
+		public static String checkRegistrationNo(ArrayList<Registration> registrationList) {
+			String registration_no = "";
+			boolean unique = true;
+			while (unique != false) {
+				String output = "";
+				if(unique == true) {
+					registration_no = Helper.readString("Enter unique registration number > ");
+					for(int i=0;i<registrationList.size();i++) {
+						Registration r = registrationList.get(i);
+						
+						if(r.getRegistration_no().equals(registration_no)) {
+							System.out.println("Registration No has been used.");
+							unique = true;
+							output += r.getRegistration_no();
+						}
+					}
+				}
+				if (output == "") {
+					unique = false;
+				}
+			}
+			return registration_no;
+			
+		}
 	
 	//M5 : Task 1 - Register for course schedule
 		//-----------------------------------REGISTER--------------------------------------
@@ -71,9 +114,10 @@ public class ManageRegistration {
         System.out.println("REGISTER COURSE SCHEDULE");
         Helper.line(40, "=");
 
- 
+		String uniqueregistration_no = checkRegistrationNo(registrationList);
 
-        int registration_no = Helper.readInt("Enter Registration Number > ");
+
+        String registration_no = Helper.readString("Enter Registration Number > ");
         String schedule_id = Helper.readString("Enter Schedule ID > ");
         String  email = Helper.readString("Enter Member's Email > ");
         String status = Helper.readString("Enter Status > ");	
@@ -102,7 +146,7 @@ public class ManageRegistration {
         return output;
     }
 	//M5 : Task 2 ------------------ VIEW ALL REGISTRATION---------------------------
-			private static void viewAllRegistration(ArrayList<Registration> registrationList) {
+			public static void viewAllRegistration(ArrayList<Registration> registrationList) {
 
 			Helper.line(40, "-");
 			System.out.println("VIEW ALL REGISTRATION");
@@ -120,7 +164,7 @@ public class ManageRegistration {
 			//M5 : Task 3 - Delete Registered Course Schedule
 			//--------------------------Delete Registration---------------------------
 			
-			public static void deleteRegistration(ArrayList<Registration> registrationList, int registration_id) {
+			public static void deleteRegistration(ArrayList<Registration> registrationList, String registration_id) {
 			        for (int i = 0; i < registrationList.size(); i++) {
 			        	Registration r = registrationList.get(i);
 			           
@@ -132,7 +176,70 @@ public class ManageRegistration {
 			            }
 			        }
 			}
+		  
+        	   
+        	   //Update menu
+        	   public static void updateMenu() {
+        			Helper.line(40, "=");
+        			System.out.println("1.Update Status");
+        			System.out.println("2.Quit");
+        			Helper.line(40, "=");
+        	   }
+        			
+        			//M5 : Task 4 - Update Registered Course Schedule 
+        			//--------------------------Update Registration--------------------------        
+    
+        	           public static void updateRegistration(ArrayList<Registration> registrationList) {
 
-}
-
+        			int option = 0; {
+        			while (option != 2) {
+        				updateMenu();
+        				option = Helper.readInt("Enter option > ");
+        				
+        				if(option == 1) {
+        					String checkRegistrationNo = Helper.readString("Enter Registration No > ");
+        					for(int i=0; i < registrationList.size();i++) {
+        						if(checkRegistrationNo.equals(registrationList.get(i).getRegistration_no())) {
+        							System.out.println(String.format("Current Status: %s", registrationList.get(i).getStatus()));
+        							String newStatus = Helper.readString("Enter new Status > ");
+									registrationList.get(i).setStatus(newStatus);
+        							System.out.println("Status updated successfully");
+        						}
+        					}
+        				
+        			} else if(option == 2) {
+        				System.out.println("Successfully quit update menu");
+        			}
+        		}
+        			}
+        	   }
+           
+	
+	private static void SearchBySchedule_id(ArrayList<Registration> registrationList) {
+        // TODO Auto-generated method stub
+        Helper.line(20, "=");
+        System.out.println("Search registration by schedule id");
+        Helper.line(20, "=");
+        
+        String searchId = Helper.readString("Enter schedule id to search >");
+        
+        String output = "";
+		output += String.format("%-20s %-10s %-20s %-20s %-20s %-20s\n", "REGISTRATION_ID", "SCHEDULE_ID", "EMAIL", "STATUS", "START DATE", "ENDDATE");        
 		
+        for (int i = 0; i < registrationList.size(); i++) {
+            if (registrationList.get(i).getSchedule_id().equals(searchId)) {
+                if (registrationList.get(i).getSchedule_id().contains(searchId)) {
+                	Registration r = registrationList.get(i);
+    				output  += String.format("%-20s %-10s %-20s %-20s %-20s %-20s\n", r.getRegistration_no(), r.getSchedule_id(), r.getEmail(), r.getStatus(), r.getStart_date(), r.getEnd_date());
+                    System.out.println(output);
+                    
+                } else {
+                    System.out.println("Schedule Id entered does not exist.");
+                }
+            }
+        }
+        
+	}
+}
+	
+

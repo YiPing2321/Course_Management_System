@@ -46,7 +46,7 @@ public class ManageRegistrationTest {
 		//Given an empty list, after adding 1 item, test if the size of the list is 1 - normal
 		ManageRegistration.addCourseSchedule(registrationList);
 		ManageRegistration.addCourseSchedule(registrationList);
-		assertEquals("Test that registration arraylist size is 1", 1, registrationList.size());
+		assertEquals("Test that registration arraylist size is 2", 2, registrationList.size());
 		
 		//test if the expected output string same as the list of Course Registration retrieved from the Case_Study - 	
 		allRegistration = ManageRegistration.retrieveAllRegistration(registrationList);
@@ -85,7 +85,7 @@ public class ManageRegistrationTest {
 		// Test if Item list is not null but empty - boundary
 		assertNotNull("Test if there is valid Course Category arraylist to delete item", registrationList);
 		
-		//Test that if the item have been deleted, the Registration arraylist size is decrease by 1 
+		//Test that if the item have been deleted, the Registration arraylist size is minus by 1 
 		// which in this case is 1 - normal
 		int name = r1.getRegistration_no();
 		ManageRegistration.deleteRegistration(registrationList, r1.getRegistration_no());
@@ -93,7 +93,7 @@ public class ManageRegistrationTest {
 		assertEquals("Check that the deleted ID is not used anymore",
 				true, name != registrationList.get(0).getRegistration_no());
 						
-		//Test that if the item have been deleted, the Registration arraylist size is decrease by 1 
+		//Test that if the item have been deleted, the Registration arraylist size is minus by 1 
 		// which in this case is 0 - normal
 	ManageRegistration.deleteRegistration(registrationList, r2.getRegistration_no());
 		assertEquals("Check that Registration arraylist size is 0", 0, registrationList.size());
