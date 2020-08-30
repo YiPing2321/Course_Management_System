@@ -215,7 +215,7 @@ public class ManageRegistration {
         	   }
            
 	
-	private static void SearchBySchedule_id(ArrayList<Registration> registrationList) {
+	public static void SearchBySchedule_id(ArrayList<Registration> registrationList) {
         // TODO Auto-generated method stub
         Helper.line(20, "=");
         System.out.println("Search registration by schedule id");
