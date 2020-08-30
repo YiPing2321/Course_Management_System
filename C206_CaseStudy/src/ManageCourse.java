@@ -228,7 +228,7 @@ public class ManageCourse {
         // TODO Auto-generated method stub
         String code = Helper.readString("Enter course code > ");
         char confirm = Helper.readChar("Are you sure you want to delete this course? (y/n) >");
-        
+       
         for (int i = 0; i < courseList.size(); i++) {
             if (Course_ScheduleList.get(i).getSchedule_id().contains(code)) {
                 if (confirm == 'y') {
@@ -236,9 +236,11 @@ public class ManageCourse {
                 }
             } else {
                 courseList.remove(i);
+                System.out.println("Course deleted.");
             }
         }
-        
+        ManageCourse.viewCourse(courseList);
+       
     }
 
     public static void ViewCourseSchedule(ArrayList<Course> courseList, ArrayList<Course_Schedule> Course_ScheduleList) {
