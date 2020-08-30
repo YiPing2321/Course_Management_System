@@ -20,20 +20,16 @@ public class ManageMember_test {
 		private static Member member1;
 		private static Member member2;
 		private static Member member3;
-		private static Member member4;
 		private ArrayList<Member> memberList; 	
 			
 		@Before
 		public void setUp() throws Exception{
 			C206_CaseStudy.main(args);
-			//test normal 
+			
 			member1 = new Member("Jade","F",94850592,"jade@rp.edu.sg","05/11/95","Singapore", "abc123");
 			member2 = new Member("Jack","M",85716392,"Jack@gmail.com","31/03/85","Colombia", "hello");
-			//test boundary
 			member3 = new Member("Robbie","M",99172530,"robbie@hotmail.com","22/03/82","England","byebye");
-			//test error
-			member4 = new Member("Sarah","F",87251430,"sarah@outlook.com","11/08/76","Malaysia","nice");		
-			
+	
 			memberList = new ArrayList<Member>();
 	}
 		
@@ -66,9 +62,16 @@ public class ManageMember_test {
 	public void addMembersTest() {
 		//check memberList is not null (boundary)
 		assertNotNull("Test for valid arraylist to add new members",memberList);
+		
 		//check arraylist size is 1 after adding (normal)
 		memberList.add(member1);
 		assertEquals("Check that memberList size is 1",1,memberList.size());
+		
+		//check arraylist size is 2 after adding another member 
+		assertEquals("Check memberList size is 2",2,memberList.size());
+		
+		//check that email is unique (error)
+		assertEquals("Check that email is unique",true,member2.getEmail() != member1.getEmail());
 		
 	}
 	@Test
