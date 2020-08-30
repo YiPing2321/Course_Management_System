@@ -116,5 +116,51 @@ public class ManageCourse_CategoryTest {
 		assertEquals("Check that Course_Category arraylist size is 0", 0, Course_Category.size());
 		//No need to check if the deleted name is not used anymore becuse the size of the arraylist is 0, and 1 will be null
 	}
+	
+	@Test
+	public void updateCategoryTest() {
+		retrieveAllCategory();
+		//For cc1:
+		//Test that cc1 can be updated if it can be found in the list
+		
+		ManageCategory.updateCategory(Course_Category, cc1.getCourse_name()); //normal
+		
+		//Test that new description cannot be typed if category name does not exist.
+		assertTrue("Check that new description cannot be typed if category name does not exist ", cc1.getCourse_name() == name);
+		//boundary condition
+		
+		
+		//For cc2:
+		//Test that cc2 can be updated if it can be found in the list
+
+		ManageCategory.updateCategory(Course_Category, cc2.getCourse_name()); //normal
+		
+		//Test that new description cannot be typed if category name does not exist.
+		assertTrue("Check that new description cannot be typed if category name does not exist ", cc1.getCourse_name() == name);
+		//boundary condition
+		
+	}
+	
+	@Test
+	public void SearchByNameTest() {
+		retrieveAllCategory();
+		
+		String name = "Technology";
+		//Test if cc1 has the name technology, it should display the details - normal
+		ManageCategory.SearchByName(Course_Category, name);
+		
+		name = "Accounting";
+		//Test if cc2 does not have the name accounting, it should not display any details - boundary
+		ManageCategory.SearchByName(Course_Category, name);
+		
+		//Test if the user entered a name that is a number - error
+		//Print "Name cannot be a number" if condition met
+		name = 0.0;
+		ManageCategory.SearchByName(Course_Category, name);
+		
+		name = -10;
+		ManageCategory.SearchByName(Course_Category, name);;
+	}
+	
 
 }
