@@ -67,31 +67,52 @@ public class ManageMember_test {
 		memberList.add(member1);
 		assertEquals("Check that memberList size is 1",1,memberList.size());
 		
-		//check arraylist size is 2 after adding another member 
+		//check arraylist size is 2 after adding another member (normal)
+		memberList.add(member2);
 		assertEquals("Check memberList size is 2",2,memberList.size());
 		
 		//check that email is unique (error)
 		assertEquals("Check that email is unique",true,member2.getEmail() != member1.getEmail());
 		
 	}
-	@Test
+	@Test	
 	public void deleteMembersTest() {
-		ManageMember.retrieveMembers(memberList);
+		retrieveAllMembersTest();
 		//test list not null but empty (boundary)
 		assertNotNull("Test for valid arraylist to delete members from",memberList);
+
+		//Test that if member has registered for course, cannot be deleted (normal)
+		if(member1.getEmail().equals(ManageMember.checkEmail(memberList))) {
+			
+		}
+		//Test if deletion not done, size of arrayList is same (normal)
+		assertEquals("Check size of memberList is still 2",2,memberList.size());
+		
 		//Test that if the item have been deleted, the memberList arraylist size decrease by 1 
 		// (normal)
 		ManageMember.deleteMembers(memberList);
-		assertEquals("Check that memberList arraylist size is 0", 0, memberList.size());
+		assertEquals("Check that memberList arraylist size is 1", 1, memberList.size());
 		
 	}
 	@Test
 	public void updateMembersTest() {
+		ManageMember.updateMembers(memberList);
+		//Test that the size of arraylist does not change after updating (normal)
+		assertEquals("Check that memberList size does not change 2",2,memberList.size());
 		
+		//Test that the password is updated & not blank (boundary)
+		assertTrue("Check that the password is updated ", member1.getPassword().length() >= 0);
+		//Test that the country of residence in updated & not blank (boundary)
+		assertTrue("Check that the country is updated ", member1.getCountry().length() >= 0);
+		//Test that the mobile is updated & not blank (boundary)
+		assertTrue("Check that the mobile is updated", member1.getMobile_number() >= 1);
 	}
+	
 	@Test
 	public void viewCoursesTest() {
-		
+		//test list not null but empty (boundary)
+		assertNotNull("Test for valid arraylist to select a member from",memberList);
+
 	}
 	
 }
