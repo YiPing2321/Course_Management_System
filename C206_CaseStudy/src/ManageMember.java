@@ -24,7 +24,7 @@ public class ManageMember{
 		memberList.add(new Member("Jack","M",85716392,"Jack@gmail.com","31/03/85","Colombia", "hello"));
 		
 		int option = 0;
-		while(option != 5) {
+		while(option != 6) {
 			menu();
 			option = Helper.readInt("Enter option > ");
 			
