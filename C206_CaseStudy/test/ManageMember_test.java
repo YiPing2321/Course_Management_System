@@ -67,8 +67,9 @@ public class ManageMember_test {
 		//check memberList is not null (boundary)
 		assertNotNull("Test for valid arraylist to add new members",memberList);
 		//check arraylist size is 1 after adding (normal)
-		ManageMember.addMembers(memberList);
+		memberList.add(member1);
 		assertEquals("Check that memberList size is 1",1,memberList.size());
+		
 	}
 	@Test
 	public void deleteMembersTest() {
