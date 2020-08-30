@@ -106,13 +106,19 @@ public class ManageMember_test {
 		assertTrue("Check that the country is updated ", member1.getCountry().length() >= 0);
 		//Test that the mobile is updated & not blank (boundary)
 		assertTrue("Check that the mobile is updated", member1.getMobile_number() >= 1);
+		
+		//If user enters letters for mobile number it will display as incorrect input (error)
 	}
 	
 	@Test
 	public void viewCoursesTest() {
 		//test list not null but empty (boundary)
 		assertNotNull("Test for valid arraylist to select a member from",memberList);
-
+		
+		//Test if member selected, courses will be displayed (normal)
+		ManageMember.viewCourses(memberList);
+		
+		//Test if member does not exist, it will display invalid (error)
 	}
 	
 }
