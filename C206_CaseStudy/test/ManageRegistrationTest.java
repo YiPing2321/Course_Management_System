@@ -42,7 +42,7 @@ public class ManageRegistrationTest {
 		// Test if Registration list is not null but empty - boundary
 		assertNotNull("Test if there is valid registrationList arraylist to retrieve item", registrationList);
 		
-		//test if the list of Course Category retrieved from the SourceCentre is empty - boundary
+		//test if the list of Registration retrieved is empty - boundary
 		String allRegistration = ManageRegistration.retrieveAllRegistration(registrationList);
 		String testOutput = "";
 		assertEquals("Check that ViewAllRegistration", testOutput, allRegistration);
@@ -50,9 +50,9 @@ public class ManageRegistrationTest {
 		//Given an empty list, after adding 1 item, test if the size of the list is 1 - normal
 		ManageRegistration.addCourseSchedule(registrationList);
 		ManageRegistration.addCourseSchedule(registrationList);
-		assertEquals("Test that registration arraylist size is 2", 2, registrationList.size());
+		assertEquals("Test that registration arraylist size is 1", 1, registrationList.size());
 		
-		//test if the expected output string same as the list of Course Registration retrieved from the Case_Study - 	
+		//test if the expected output string same as the list of Course Registration retrieved from the Case_Study - 	normal
 		allRegistration = ManageRegistration.retrieveAllRegistration(registrationList);
 		testOutput = String.format("%-20s %-10.2f %-20s %-20s %-30s\n", 1, "CS001-R13", "jade@rp.edu.sg", "Pending", "1/08/2020", "15/08/2020");
 		
@@ -120,11 +120,11 @@ public void SearchBySchedule_idTest() {
 	
 	String schedule_id = "CS001-R13";
 	//Test if arraylist has the schedule id, if yes, it should display the details - normal
-	ManageRegistration.SearchBySchedule_id(registrationList);
+	ManageRegistration.SearchBySchedule_id(registrationList, schedule_id);
 	
 	String schedule_id2 = "CS005-R13";	
 	//Test if arraylist does not have the schedule id of CS005-R13, it should not display any details - boundary
-	ManageRegistration.SearchBySchedule_id(registrationList);
+	ManageRegistration.SearchBySchedule_id(registrationList, schedule_id2);
 	
 }
 
