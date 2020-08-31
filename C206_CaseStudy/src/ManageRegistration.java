@@ -27,7 +27,7 @@ public class ManageRegistration {
 		member = ManageMember.getMemberList();
 		
 		registrationList.add(new Registration("A1", "CS001-R13", "jade@rp.edu.sg", "Pending", "1/08/2020", "15/08/2020"));
-		registrationList.add(new Registration("A2", "CS001-R13", "Jack@gmail.com", "Pending", "1/08/2020", "31/08/2020"));
+		registrationList.add(new Registration("A2", "CS002-R13", "Jack@gmail.com", "Pending", "1/08/2020", "31/08/2020"));
 
 		int option = 0;
 		
